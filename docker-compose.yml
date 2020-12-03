@@ -1,0 +1,75 @@
+{
+    "version": "3",
+    "volumes": {
+        "postgres_data": {},
+        "mysql_data": {},
+        "pgadmin_data": {}
+    },
+    "services": {
+        "postgres": {
+            "image": "postgres:alpine",
+            "environment": {
+                "POSTGRES_PASSWORD": "usbw"
+            },
+            "volumes": [
+                "postgres_data:/var/lib/postgresql/data/"
+            ],
+            "ports": [
+                "15432:5432"
+            ]
+        },
+        "mysql": {
+            "image": "mysql",
+            "environment": {
+                "MYSQL_ALLOW_EMPTY_PASSWORD": "true"
+            },
+            "volumes": [
+                "mysql_data:/var/lib/mysql/"
+            ]
+        },
+        "php-fpm": {
+            "build": {
+                "context": "./",
+                "dockerfile": "Dockerfile-php-fpm"
+            },
+            "volumes": [
+                "./:/var/www/html/"
+            ],
+            "depends_on": [
+                "postgres",
+                "mysql"
+            ]
+        },
+        "nginx": {
+            "image": "nginx:alpine",
+            "volumes": [
+                "./:/var/www/",
+                "./nginx.php-fpm.conf:/etc/nginx/nginx.conf:ro"
+            ],
+            "ports": [
+                "80:80"
+            ],
+            "depends_on": [
+                "php-fpm"
+            ]
+        },
+        "pgadmin": {
+            "image": "dpage/pgadmin4:4.18",
+            "restart": "always",
+            "environment": {
+                "PGADMIN_DEFAULT_EMAIL": "user@email.com",
+                "PGADMIN_DEFAULT_PASSWORD": "secret",
+                "PGADMIN_LISTEN_PORT": 5050
+            },
+            "ports": [
+                "5050:5050"
+            ],
+            "volumes": [
+                "pgadmin_data:/var/lib/pgadmin"
+            ],
+            "links": [
+                "postgres:pgsql-server"
+            ]
+        }
+    }
+}
