@@ -1,12 +1,12 @@
 CREATE TABLE GrupoArmado (
-  CodigoG INT NOT NULL,
+  CodigoG SERIAL NOT NULL,
   NomeGrupo VARCHAR(45) NULL,
   NumBaixasG INT NULL,
   PRIMARY KEY (CodigoG)
 );
 
 CREATE TABLE LiderPolitico (
-  CodigoG INT NOT NULL,
+  CodigoG SERIAL NOT NULL,
   NomeL VARCHAR(45) NOT NULL,
   Apoios VARCHAR(45) NULL,
   PRIMARY KEY (CodigoG, NomeL),
@@ -18,7 +18,7 @@ CREATE TABLE LiderPolitico (
 );
 
 CREATE TABLE OrganizacaoM (
-  CodigoOrg INT NOT NULL,
+  CodigoOrg SERIAL NOT NULL,
   NomeOrg VARCHAR(45) NULL,
   TipoAjuda VARCHAR(45) NULL,
   Tipo VARCHAR(45) NULL,
@@ -50,7 +50,7 @@ CREATE TABLE Dialoga (
 );
 
 CREATE TABLE Conflito (
-  Codigo INT NOT NULL,
+  Codigo SERIAL NOT NULL,
   NumMortos INT NULL,
   NumFeridos INT NULL,
   Nome VARCHAR(45) NULL,
@@ -82,7 +82,7 @@ CREATE TABLE DEMedia (
 );
 
 CREATE TABLE Pais (
-  Codigo INT NOT NULL,
+  Codigo SERIAL NOT NULL,
   Pais VARCHAR(45) NOT NULL,
   PRIMARY KEY (Pais, Codigo),
   CONSTRAINT Conflito
@@ -102,7 +102,7 @@ CREATE TABLE DSMedia (
 );
 
 CREATE TABLE Racial (
-  Codigo INT NOT NULL,
+  Codigo SERIAL NOT NULL,
   Etnia VARCHAR NOT NULL,
   PRIMARY KEY (Codigo, Etnia),
   CONSTRAINT Codigo
@@ -114,7 +114,7 @@ CREATE TABLE Racial (
 
 
 CREATE TABLE Economico (
-  Codigo INT NOT NULL,
+  Codigo SERIAL NOT NULL,
   MatPrima VARCHAR(45) NOT NULL,
   PRIMARY KEY (Codigo, MatPrima),
   CONSTRAINT Codigo
@@ -126,7 +126,7 @@ CREATE TABLE Economico (
 
 
 CREATE TABLE Religioso (
-  Codigo INT NOT NULL,
+  Codigo SERIAL NOT NULL,
   Religiao VARCHAR(45) NOT NULL,
   PRIMARY KEY (Codigo, Religiao),
   CONSTRAINT Codigo
@@ -170,7 +170,7 @@ CREATE TABLE DSGrupo (
 
 CREATE TABLE Divisao (
   CodigoG INT NOT NULL,
-  NroDivisao INT NOT NULL,
+  NroDivisao SERIAL NOT NULL,
   NumBaixasD INT NULL,
   Barcos INT NULL,
   Avioes INT NULL,
@@ -185,7 +185,7 @@ CREATE TABLE Divisao (
 );
 
 CREATE TABLE ChefeMilitar (
-  codigoChef INT NOT NULL,
+  codigoChef SERIAL NOT NULL,
   Faixa VARCHAR(45) NULL,
   NomeL VARCHAR(45) NOT NULL,
   CodigoG INT NULL,
@@ -418,7 +418,7 @@ INSERT INTO DEGrupo (Codigo, CodigoG, DataEntrada) VALUES (2, 2, NOW());
 INSERT INTO DEGrupo (Codigo, CodigoG, DataEntrada) VALUES (2, 3, NOW());
 INSERT INTO DEGrupo (Codigo, CodigoG, DataEntrada) VALUES (2, 1, NOW());
 
-INSERT INTO Pais (Codigo, Pais) VALUES (1, 'Brasil')
-INSERT INTO Pais (Codigo, Pais) VALUES (1, 'EUA')
-INSERT INTO Pais (Codigo, Pais) VALUES (2, 'Síria')
-INSERT INTO Pais (Codigo, Pais) VALUES (2, 'Ceará')
+INSERT INTO Pais (Codigo, Pais) VALUES (1, 'Brasil');
+INSERT INTO Pais (Codigo, Pais) VALUES (1, 'EUA');
+INSERT INTO Pais (Codigo, Pais) VALUES (2, 'Síria');
+INSERT INTO Pais (Codigo, Pais) VALUES (2, 'Ceará');
