@@ -1,7 +1,8 @@
-<?php
-
-$db = new PDO('pgsql:host=postgres;dbname=postgres;user=postgres;password=usbw');
-
-phpinfo();
-
-?>
+<html>
+<head>
+    <title>Trabalho de BD</title>
+</head>
+<body>
+    <a href="/view/conflitosBelicos.php">Conflitos Bélicos</a>
+</body>
+</html>
