@@ -29,6 +29,10 @@ class Database extends PDO {
         $stmt->execute();
         return $stmt;
     }
+
+    public function getlastInsertId(){
+        return $this->conn->lastInsertId();
+    }
 }
 
 ?>

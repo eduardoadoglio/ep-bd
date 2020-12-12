@@ -14,18 +14,22 @@ class ConflitoBelico {
         $this->database->executeQuery("INSERT INTO conflito (nummortos, numferidos, nome) VALUES (0, 0, :name)", array(
             ":name" => $name
         ));
+        return $this->database->getLastInsertId();
     }
 
     public function updateConflitoBelico($name){
-
+        
     }
 
     public function deleteConflitoBelico($name){
 
     }
 
-    public function getConflitoBelicoByName($name){
-
+    public function getConflitoBelicoById($id){
+        $response = $this->database->executeQuery("SELECT * FROM conflito WHERE codigo = :id", array(
+            ":id" => $id
+        ));
+        return $response->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getAllConflitosBelicos($name){
