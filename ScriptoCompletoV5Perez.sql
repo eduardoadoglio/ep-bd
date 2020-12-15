@@ -57,11 +57,13 @@ CREATE TABLE Conflito (
   PRIMARY KEY (Codigo)
 );
 
-CREATE TABLE Media (
+
+CREATE TABLE DEMedia (
   CodigoOrg INT NOT NULL,
   Codigo INT NOT NULL,
-  PRIMARY KEY (CodigoOrg, Codigo),
-  CONSTRAINT CodigoOrg
+  DataEntrada TIMESTAMP NOT NULL,
+  PRIMARY KEY (CodigoOrg, DataEntrada, Codigo),
+  CONSTRAINT OrganizacaoM
     FOREIGN KEY (CodigoOrg)
     REFERENCES OrganizacaoM (CodigoOrg)
     ON DELETE NO ACTION
@@ -71,14 +73,6 @@ CREATE TABLE Media (
     REFERENCES Conflito (Codigo)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
-);
-
-CREATE TABLE DEMedia (
-  CodigoOrg INT NOT NULL,
-  Codigo INT NOT NULL,
-  DataEntrada TIMESTAMP NOT NULL,
-  PRIMARY KEY (CodigoOrg, DataEntrada, Codigo),
-  FOREIGN KEY (CodigoOrg, Codigo) REFERENCES Media (CodigoOrg, Codigo)
 );
 
 CREATE TABLE Pais (
@@ -98,7 +92,16 @@ CREATE TABLE DSMedia (
   Codigo INT NOT NULL,
   DataSaida TIMESTAMP NOT NULL,
   PRIMARY KEY (CodigoOrg, DataSaida, Codigo),
-  FOREIGN KEY (CodigoOrg, Codigo) REFERENCES Media (CodigoOrg, Codigo)
+  CONSTRAINT OrganizacaoM
+    FOREIGN KEY (CodigoOrg)
+    REFERENCES OrganizacaoM (CodigoOrg)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT Conflito
+    FOREIGN KEY (Codigo)
+    REFERENCES Conflito (Codigo)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 );
 
 CREATE TABLE Racial (
@@ -202,12 +205,6 @@ CREATE TABLE TipoArma (
 );
 
 
-CREATE TABLE Traficante (
-  NomeTraf VARCHAR(45) NOT NULL,
-  PRIMARY KEY (NomeTraf)
-);
-
-
 CREATE TABLE Fornece (
   NomeArma VARCHAR(45) NOT NULL,
   NomeTraf VARCHAR(45) NOT NULL,
@@ -217,11 +214,6 @@ CREATE TABLE Fornece (
   CONSTRAINT NomeArma
     FOREIGN KEY (NomeArma)
     REFERENCES TipoArma (NomeArma)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT NomeTraf
-    FOREIGN KEY (NomeTraf)
-    REFERENCES Traficante (NomeTraf)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT CodigoG
@@ -240,11 +232,6 @@ CREATE TABLE PodeFornecer (
   CONSTRAINT NomeArma
     FOREIGN KEY (NomeArma)
     REFERENCES TipoArma (NomeArma)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT NomeTraf
-    FOREIGN KEY (NomeTraf)
-    REFERENCES Traficante (NomeTraf)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
@@ -395,7 +382,6 @@ INSERT INTO GrupoArmado (CodigoG, NomeGrupo) VALUES (4, 'UNICAMP');
 INSERT INTO LiderPolitico (CodigoG, NomeL, Apoios) VALUES (1, 'Nabio Fakano', 'Digimon');
 INSERT INTO LiderPolitico (CodigoG, NomeL, Apoios) VALUES (2, 'MODRIGO RELLO', 'SPATULA');
 
-
 INSERT INTO Divisao (CodigoG, NroDivisao, NumBaixasD, Barcos, Avioes, Tanques, Homens) VALUES (1, 1, 2, 2, 2, 2, 2);
 INSERT INTO Divisao (CodigoG, NroDivisao, NumBaixasD, Barcos, Avioes, Tanques, Homens) VALUES (2, 2, 2, 2, 2, 2, 2);
 
@@ -406,7 +392,6 @@ INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES 
 INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (4, 'Tenente', 'MODRIGO RELLO', 2, 2);
 INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (5, 'Tenente', 'MODRIGO RELLO', 2, 2);
 INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (6, 'Tenente', 'MODRIGO RELLO', 2, 2);
-
 
 INSERT INTO Conflito (Codigo, NumMortos, NumFeridos, Nome) VALUES (1, 200, 200, 'Assalto da esquina');
 INSERT INTO Conflito (Codigo, NumMortos, NumFeridos, Nome) VALUES (2, 28, 37, 'Assalto da EACH');
