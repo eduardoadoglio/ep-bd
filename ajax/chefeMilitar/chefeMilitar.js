@@ -1,9 +1,9 @@
 function handleGrupoMilitarCreationForm(){
-    $("#grupo-militar-create").css('display', 'block');
-    $("#new-grupo-militar-actions").css('display', 'inline-block');
-    $("#lider-politico-create").css('display', 'block');
-    $("#divisao-create").css('display', 'block');
-    $("#grupo-militar-container").css('display', 'none');
+    $("#grupo-militar-create").toggleClass('hidden');
+    $("#new-grupo-militar-actions").toggleClass('hidden');
+    $("#lider-politico-create").toggleClass('hidden');
+    $("#divisao-create").toggleClass('hidden');
+    $("#grupo-militar-container").toggleClass('hidden');
     if($("#lider-politico-container").length){
         $("#lider-politico-container").remove();
     }
@@ -70,7 +70,7 @@ function createGrupoMilitar(grupoMilitarName) {
         },
         success: function(ajaxResult){
             ajaxObj = JSON.parse(ajaxResult);
-            $("#new-grupo-militar-actions, #grupo-militar-create").css('display', 'none');
+            $("#new-grupo-militar-actions, #grupo-militar-create").toggleClass('hidden');
             $("#grupo-militar-info").append("Grupo Militar: " + ajaxObj.nomegrupo);
             $("#grupo-militar-select").attr("name", "");
             $("#hidden-grupo-militar-id").attr("value", ajaxObj.codigog);
@@ -81,6 +81,7 @@ function createGrupoMilitar(grupoMilitarName) {
     });
 }
 
+// Criação de um lider político
 function createLiderPolitico(liderPoliticoName, liderPoliticoApoio, codigoGrupo) {
     $.ajax({
         url:"../../ajax/liderPolitico/createLiderPolitico.php",
@@ -91,7 +92,7 @@ function createLiderPolitico(liderPoliticoName, liderPoliticoApoio, codigoGrupo)
         },
         success: function(ajaxResult){
             ajaxObj = JSON.parse(ajaxResult);
-            $("#new-lider-politico-actions, #lider-politico-create").css('display', 'none');
+            $("#new-lider-politico-actions, #lider-politico-create").toggleClass('hidden');
             $("#lider-politico-info").append("Lider político: " + ajaxObj.nomel);
             $("#lider-politico-select").attr("name", "");
             $("#hidden-lider-politico-name").attr("value", ajaxObj.nomel);
@@ -134,15 +135,15 @@ $(document).ready(function(){
         e.preventDefault();
         let grupoMilitarName = $("#grupo-militar-name").val();
         createGrupoMilitar(grupoMilitarName);
-        $("#new-lider-politico-actions").css('display', 'inline-block');
+        $("#new-lider-politico-actions").toggleClass('hidden');
     });
     // Cancelamento da criação de novos grupos militares
     $('body').on('click', '#new-grupo-militar-cancel', function(e){
         e.preventDefault();
-        $("#grupo-militar-create").css('display', 'none');
-        $("#lider-politico-create").css('display', 'none');
-        $("#divisao-create").css('display', 'none');
-        $('#grupo-militar-container').css('display', 'block');
+        $("#grupo-militar-create").toggleClass('hidden');
+        $("#lider-politico-create").toggleClass('hidden');
+        $("#divisao-create").toggleClass('hidden');
+        $('#grupo-militar-container').toggleClass('hidden');
     });
 
     // Criação de um novo lider político
@@ -152,8 +153,21 @@ $(document).ready(function(){
         let liderPoliticoApoio = $("#lider-politico-apoio").val();
         let codigoGrupo = $('input[name="grupoMilitarId"]').val();
         createLiderPolitico(liderPoliticoName, liderPoliticoApoio, codigoGrupo);
-        $("#new-divisao-actions").css('display', 'inline-block');
+        $("#new-divisao-actions").toggleClass('hidden');
     });
+
+    // Cancelamento da criação de um lider politico
+    $('body').on('click', '#new-lider-politico-cancel', function(e){
+        e.preventDefault();
+        $("#new-lider-politico-actions").toggleClass('hidden');
+        $("#grupo-militar-info").toggleClass('hidden');
+        $("#grupo-militar-create").toggleClass('hidden');
+        $("#lider-politico-create").toggleClass('hidden');
+        $("#divisao-create").toggleClass('hidden');
+        $('#grupo-militar-container').toggleClass('hidden');
+    });
+
+    // Após selecionar um líder político
     $('body').on('change', '#lider-politico-select', function(){
         $("#divisao-select option").not('option:first').remove();
         let liderPoliticoName = $("#lider-politico-select option:selected").val();
@@ -164,5 +178,5 @@ $(document).ready(function(){
             $(this).after('<div id="divisao-container"> Selecione uma divisão <br><select name="divisaoId" id="divisao-select"><option value="" disabled selected> -- </option></select></div>');
         }
         getDivisoesFromLiderPolitico(liderPoliticoName);
-    })
+    });
 });
