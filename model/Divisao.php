@@ -30,15 +30,23 @@ class Divisao {
     }
 
     function getDivisaoById($codigog, $id){
-        $response = $this->database->executeQuery("SELECT * FROM divisao WHERE codigog = :codigog AND nrodivisao = :id", array(
+        $response = $this->database->executeQuery("SELECT * FROM divisao WHERE codigog = :codigog AND nrodivisao = :id;", array(
             ":codigog" => $codigog,
             ":id" => $id
         ));
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
-    function getAllDivisoes($name){
-        
+    function getDivisaoByGrupoMilitarId($codigog){
+        $response = $this->database->executeQuery("SELECT * FROM divisao WHERE codigog = :codigog;", array(
+            ":codigog" => $codigog
+        ));
+        return $response->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getAllDivisoes(){
+        $response = $this->database->executeQuery("SELECT * FROM divisao;", array());
+        return $response->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }

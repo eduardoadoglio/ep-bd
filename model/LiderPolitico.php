@@ -36,8 +36,16 @@ class LiderPolitico {
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
-    function getAllLideresPoliticos(){
+    function getLiderPoliticoFromDivisao($nrodivisao){
+        $response = $this->database->executeQuery("SELECT * FROM liderpolitico WHERE nrodivisao = :nrodivisao;", array(
+            ":nrodivisao" => $nrodivisao
+        ));
+        return $response->fetch(PDO::FETCH_ASSOC);
+    }
 
+    function getAllLideresPoliticos(){
+        $response = $this->database->executeQuery("SELECT * FROM liderpolitico;", array());
+        return $response->fetch(PDO::FETCH_ASSOC);
     }
 
 }
