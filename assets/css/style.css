@@ -1,0 +1,8 @@
+/* Criação de chefe militar */
+#grupo-militar-create, #lider-politico-create, #divisao-create{
+    display: none;
+}
+
+#new-grupo-militar-actions, #new-lider-politico-actions, #new-divisao-actions{
+    display: none;
+}

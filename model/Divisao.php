@@ -44,6 +44,13 @@ class Divisao {
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getDivisoesByLiderPoliticoName($nomel){
+        $response = $this->database->executeQuery("SELECT DISTINCT(nrodivisao) FROM divisao JOIN liderpolitico ON divisao.codigog = liderpolitico.codigog WHERE nomel = :nomel;", array(
+            ":nomel" => $nomel
+        ));
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     function getAllDivisoes(){
         $response = $this->database->executeQuery("SELECT * FROM divisao;", array());
         return $response->fetchAll(PDO::FETCH_ASSOC);

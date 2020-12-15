@@ -13,7 +13,7 @@ class ChefeMilitar {
     
     function createChefeMilitar($faixa, $nrodivisao, $codigog, $nomel){
         $this->database->executeQuery("INSERT INTO chefemilitar (faixa, nrodivisao, codigog, nomel) VALUES (:faixa, :nrodivisao, :codigog, :nomel)", array(
-            ":faiax" => $faiax,
+            ":faixa" => $faixa,
             ":nrodivisao" => $nrodivisao,
             ":codigog" => $codigog,
             ":nomel" => $nomel,
