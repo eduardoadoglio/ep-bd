@@ -3,7 +3,7 @@
 
 require_once('Database.php');
 
-public class GrupoMilitar {
+class GrupoMilitar {
     
     private $database;
 
@@ -12,7 +12,10 @@ public class GrupoMilitar {
     }
     
     function createGrupoMilitar($name){
-
+        $this->database->executeQuery("INSERT INTO grupoarmado (nomegrupo, numbaixasG) VALUES (:name, 0)", array(
+            ":name" => $name
+        ));
+        return $this->database->getLastInsertId();
     }
 
     function updateGrupoMilitar($name){
@@ -23,12 +26,16 @@ public class GrupoMilitar {
 
     }
 
-    function getGrupoMilitarByName($name){
-
+    function getGrupoMilitarById($id){
+        $response = $this->database->executeQuery("SELECT * FROM grupoarmado WHERE codigog = :id", array(
+            ":id" => $id
+        ));
+        return $response->fetch(PDO::FETCH_ASSOC);
     }
 
-    function getAllGruposMilitares($name){
-        
+    function getAllGruposMilitares(){
+        $response = $this->database->executeQuery("SELECT * FROM grupoarmado;");
+        return $response->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
