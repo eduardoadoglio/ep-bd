@@ -3,6 +3,6 @@
     <title>Trabalho de BD</title>
 </head>
 <body>
-    <a href="/view/conflitosBelicos.php">Conflitos Bélicos</a>
+    <a href="/view/conflito/conflitosBelicos.php">Conflitos Bélicos</a>
 </body>
 </html>
