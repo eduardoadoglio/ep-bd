@@ -1,7 +1,16 @@
 <?php
 
-public class GrupoMilitar {
 
+require_once('Database.php');
+
+public class GrupoMilitar {
+    
+    private $database;
+
+    public function __construct(){
+        $this->database = new Database();
+    }
+    
     function createGrupoMilitar($name){
 
     }
