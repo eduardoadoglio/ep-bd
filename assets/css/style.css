@@ -279,11 +279,15 @@ input:focus {
     color: white;
     font-weight: bold;
 }
-
-.table-data {
+.table-data.table-list-all {
+    display: inline-block ;
+    width: auto;
     height: 60vh;
-    display: inline-block;
     overflow-y: scroll;
+}
+.table-data {
+    width: 800px;
+    overflow: hidden;
     border-collapse: collapse;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
