@@ -72,7 +72,7 @@ function createGrupoMilitar(grupoMilitarName) {
             ajaxObj = JSON.parse(ajaxResult);
             $("#new-grupo-militar-actions, #grupo-militar-create").toggleClass('hidden');
             $("#grupo-militar-info").append("Grupo Militar: " + ajaxObj.nomegrupo);
-            $("#grupo-militar-select").attr("name", "");
+            $("#grupo-militar-select").removeAttr("name");
             $("#hidden-grupo-militar-id").attr("value", ajaxObj.codigog);
         },
         error: function(result){
@@ -94,7 +94,7 @@ function createLiderPolitico(liderPoliticoName, liderPoliticoApoio, codigoGrupo)
             ajaxObj = JSON.parse(ajaxResult);
             $("#new-lider-politico-actions, #lider-politico-create").toggleClass('hidden');
             $("#lider-politico-info").append("Lider político: " + ajaxObj.nomel);
-            $("#lider-politico-select").attr("name", "");
+            $("#lider-politico-select").removeAttr("name");
             $("#hidden-lider-politico-name").attr("value", ajaxObj.nomel);
         },
         error: function(result){
@@ -106,7 +106,7 @@ function createLiderPolitico(liderPoliticoName, liderPoliticoApoio, codigoGrupo)
 // Criação de uma divisão
 function createDivisao(codigoGrupo, numBarcos, numAvioes, numTanques, numHomens){
     $.ajax({
-        url:"../../ajax/liderPolitico/createLiderPolitico.php",
+        url:"../../ajax/divisao/createDivisao.php",
         data:{
             codigoGrupo:codigoGrupo,
             numBarcos:numBarcos,
@@ -115,10 +115,11 @@ function createDivisao(codigoGrupo, numBarcos, numAvioes, numTanques, numHomens)
             numHomens:numHomens,
         },
         success: function(ajaxResult){
-            ajaxObj = JSON.parse(ajaxResult);
+            console.log(ajaxResult);
+            let ajaxObj = JSON.parse(ajaxResult);
             $("#new-divisao-actions, #divisao-create").toggleClass('hidden');
             $("#divisao-info").append("Divisão: " + ajaxObj.nrodivisao);
-            $("#divisao-select").attr("name", "");
+            $("#divisao-select").removeAttr("name");
             $("#hidden-divisao-id").attr("value", ajaxObj.nrodivisao);
         },
         error: function(result){
@@ -146,16 +147,16 @@ function handleHiddenFormFieldsAfterCancel(entityType){
     switch(entityType){
         case 'grupo-militar':
             $("#grupo-militar-select").attr("name", "grupoMilitarId");
-            $("#hidden-grupo-militar-id").attr("name", "");
+            $("#hidden-grupo-militar-id").removeAttr("name");
 
         break;
         case 'lider-politico':
             $("#lider-politico-select").attr("name", "liderPoliticoName");
-            $("#hidden-lider-politico-name").attr("name", "");
+            $("#hidden-lider-politico-name").removeAttr("name");
         break;
         case 'divisao':
             $("#divisao-select").attr("name", "divisaoId");
-            $("#hidden-divisao-id").attr("name", "");
+            $("#hidden-divisao-id").removeAttr("name");
         break;
     }
 }
@@ -240,6 +241,7 @@ $(document).ready(function(){
         let numTanques = $("#num-tanques").val();
         let numHomens = $("#num-homens").val();
         let codigoGrupo = $('input[name="grupoMilitarId"]').val();
+        alert(codigoGrupo);
         createDivisao(codigoGrupo, numBarcos, numAvioes, numTanques, numHomens);
         $("#new-divisao-actions").toggleClass('hidden');
     });
