@@ -173,7 +173,7 @@ CREATE TABLE DSGrupo (
 
 CREATE TABLE Divisao (
   CodigoG INT NOT NULL,
-  NroDivisao SERIAL NOT NULL,
+  NroDivisao INT NOT NULL,
   NumBaixasD INT NULL,
   Barcos INT NULL,
   Avioes INT NULL,
@@ -281,7 +281,7 @@ $IncludeDEGrupo$ LANGUAGE plpgsql;
 
 CREATE FUNCTION InserirChefMilitar() RETURNS trigger AS $InserirChefMilitar$
     BEGIN
-        IF (SELECT (SELECT COUNT(*) FROM ChefeMilitar WHERE ChefeMilitar.NroDivisao = NEW.NroDivisao)) = 3 THEN
+        IF (SELECT (SELECT COUNT(*) FROM ChefeMilitar WHERE ChefeMilitar.NroDivisao = NEW.NroDivisao AND ChefeMilitar.CodigoG = NEW.CodigoG)) >= 3 THEN
             RAISE EXCEPTION 'Já possiu 3 Chefes Militares dirigindo a divisão!';
         END IF;
 
@@ -292,12 +292,12 @@ $InserirChefMilitar$ LANGUAGE plpgsql;
 CREATE FUNCTION DelOrUpdChefMilitar() RETURNS trigger AS $DelOrUpdChefMilitar$
     BEGIN
 
-        IF (SELECT (SELECT COUNT(*) FROM ChefeMilitar WHERE ChefeMilitar.NroDivisao = OLD.NroDivisao)) = 1 THEN
+        IF (SELECT (SELECT COUNT(*) FROM ChefeMilitar WHERE ChefeMilitar.NroDivisao = OLD.NroDivisao AND ChefeMilitar.CodigoG = OLD.CodigoG)) = 1 THEN
             RAISE EXCEPTION 'Pelo menos 1 chefe militar deve dirigir uma divisão!';
         END IF;
 
       IF (TG_OP = 'UPDATE') THEN
-        IF (SELECT (SELECT COUNT(*) FROM ChefeMilitar WHERE ChefeMilitar.NroDivisao = NEW.NroDivisao)) = 3 THEN
+        IF (SELECT (SELECT COUNT(*) FROM ChefeMilitar WHERE ChefeMilitar.NroDivisao = NEW.NroDivisao AND ChefeMilitar.CodigoG = NEW.CodigoG)) >= 3 THEN
             RAISE EXCEPTION 'Já possiu 3 Chefes Militares dirigindo a nova divisão!';
             END IF;
 
@@ -323,25 +323,34 @@ CREATE FUNCTION InserirHierarquiaGat() RETURNS trigger AS $InserirHierarquiaGat$
     END;
 $InserirHierarquiaGat$ LANGUAGE plpgsql;
 
-CREATE FUNCTION DelOrUpdDivisao() RETURNS trigger AS $DelOrUpdDivisao$
+CREATE FUNCTION InsertDelOrUpdDivisao() RETURNS trigger AS $InsertDelOrUpdDivisao$
     BEGIN
 
         IF (SELECT (SELECT COUNT(*) FROM Divisao WHERE Divisao.CodigoG = OLD.CodigoG)) = 1 THEN
             RAISE EXCEPTION 'Todo grupo armado precisa dispor de no mínimo uma divisão!';
         END IF;
 
+        IF (TG_OP = 'INSERT') THEN
+          UPDATE GrupoArmado SET NumBaixasG = NumBaixasG + NEW.NumBaixasD WHERE GrupoArmado.CodigoG = NEW.CodigoG;
+          NEW.NroDivisao = (SELECT coalesce(MAX(Divisao.NroDivisao), 0) FROM Divisao WHERE Divisao.CodigoG = NEW.CodigoG) + 1;
+          RETURN NEW;
+        END IF;
+
         IF (TG_OP = 'UPDATE') THEN
+          UPDATE GrupoArmado SET NumBaixasG = NumBaixasG + NEW.NumBaixasD - OLD.NumBaixasD WHERE GrupoArmado.CodigoG = OLD.CodigoG;
           RETURN NEW;
         END IF;
 
       IF (TG_OP = 'DELETE') THEN
+          UPDATE GrupoArmado SET NumBaixasG = NumBaixasG - OLD.NumBaixasD WHERE GrupoArmado.CodigoG = OLD.CodigoG;
           RETURN OLD;
         END IF;
 
         RETURN NULL;
 
     END;
-$DelOrUpdDivisao$ LANGUAGE plpgsql;
+$InsertDelOrUpdDivisao$ LANGUAGE plpgsql;
+
 
 CREATE TRIGGER DelOrUpdPais BEFORE DELETE OR UPDATE ON Pais
   FOR EACH ROW EXECUTE PROCEDURE DelOrUpdPais();
@@ -370,8 +379,8 @@ CREATE TRIGGER InserirHierarquiaReg BEFORE INSERT ON Religioso
 CREATE TRIGGER InserirHierarquiaTer BEFORE INSERT ON Territorial
     FOR EACH ROW EXECUTE PROCEDURE InserirHierarquiaGat();
 
-CREATE TRIGGER DelOrUpdDivisao BEFORE DELETE OR UPDATE ON Divisao
-  FOR EACH ROW EXECUTE PROCEDURE DelOrUpdDivisao();
+CREATE TRIGGER InsertDelOrUpdDivisao BEFORE INSERT OR DELETE OR UPDATE ON Divisao
+  FOR EACH ROW EXECUTE PROCEDURE InsertDelOrUpdDivisao();
 
 
 INSERT INTO GrupoArmado (CodigoG, NomeGrupo) VALUES (1, 'EACH');
@@ -382,16 +391,16 @@ INSERT INTO GrupoArmado (CodigoG, NomeGrupo) VALUES (4, 'UNICAMP');
 INSERT INTO LiderPolitico (CodigoG, NomeL, Apoios) VALUES (1, 'Nabio Fakano', 'Digimon');
 INSERT INTO LiderPolitico (CodigoG, NomeL, Apoios) VALUES (2, 'MODRIGO RELLO', 'SPATULA');
 
-INSERT INTO Divisao (CodigoG, NroDivisao, NumBaixasD, Barcos, Avioes, Tanques, Homens) VALUES (1, 1, 2, 2, 2, 2, 2);
-INSERT INTO Divisao (CodigoG, NroDivisao, NumBaixasD, Barcos, Avioes, Tanques, Homens) VALUES (2, 2, 2, 2, 2, 2, 2);
+INSERT INTO Divisao (CodigoG, NumBaixasD, Barcos, Avioes, Tanques, Homens) VALUES (1, 2, 2, 2, 2, 2);
+INSERT INTO Divisao (CodigoG, NumBaixasD, Barcos, Avioes, Tanques, Homens) VALUES (2, 2, 2, 2, 2, 2);
 
 INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (1, 'Tenente', 'Nabio Fakano', 1, 1);
 INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (2, 'Tenente', 'Nabio Fakano', 1, 1);
 INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (3, 'Tenente', 'Nabio Fakano', 1, 1);
 
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (4, 'Tenente', 'MODRIGO RELLO', 2, 2);
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (5, 'Tenente', 'MODRIGO RELLO', 2, 2);
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (6, 'Tenente', 'MODRIGO RELLO', 2, 2);
+INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (4, 'Tenente', 'MODRIGO RELLO', 2, 1);
+INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (5, 'Tenente', 'MODRIGO RELLO', 2, 1);
+INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (6, 'Tenente', 'MODRIGO RELLO', 2, 1);
 
 INSERT INTO Conflito (Codigo, NumMortos, NumFeridos, Nome) VALUES (1, 200, 200, 'Assalto da esquina');
 INSERT INTO Conflito (Codigo, NumMortos, NumFeridos, Nome) VALUES (2, 28, 37, 'Assalto da EACH');
