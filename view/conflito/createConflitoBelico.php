@@ -7,12 +7,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12 form">
                 <div class="form-content">
-                    <h1>Criação de grupo militar</h1>
-                    <form action="../../action/grupoMilitar/createGrupoMilitar.php" method="POST">
-                        Nome do grupo militar: <br>
-                        <input type="text" name="grupoMilitarName"> <br>
+                    <h1>Criação de conflito</h1>
+                    <form action="../../action/conflito/createConflitoBelico.php" method="POST">
+                        Nome do conflito: <br>
+                        <input type="text" name="conflitoName"> <br>
                         <input type="submit" value="Enviar">
-                    </form>
+                    </form>    
                 </div>
             </div>
         </div>
