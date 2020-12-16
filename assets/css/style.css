@@ -17,6 +17,17 @@ section {
     padding: 30px 0px;
 }
 
+.default-button {
+    border: 0px;
+    border-radius: 100px;
+    padding: 8px 15px;
+    background-color: rgb(37, 35, 35);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Menu */
 .menu {
     width: 100%;
@@ -270,9 +281,10 @@ input:focus {
 }
 
 .table-data {
-    width: 800px;
+    height: 60vh;
+    display: inline-block;
+    overflow-y: scroll;
     border-collapse: collapse;
-    overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 .table-data th, .table-data td {
@@ -290,18 +302,9 @@ input:focus {
 tbody tr:hover {
     background-color: rgba(255,255,255,0.3);
 }
-.table-data tbody td {
-    position: relative;
-}
-.table-data tbody td:hover:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -9999px;
-    bottom: -9999px;
-    background-color: rgba(255,255,255,0.2);
-    z-index: -1;
-}
 
+.table-data thead th {
+    position: sticky;
+    top: 0;
+}
    
