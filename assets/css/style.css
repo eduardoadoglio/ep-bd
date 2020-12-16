@@ -220,7 +220,7 @@ input:focus {
     outline-width: 0;
 }
 
-.full-page-form form input[type="submit"] {
+.full-page-form form input[type="submit"]{
     border: 0px;
     border-radius: 100px;
     padding: 8px 15px;
@@ -229,6 +229,24 @@ input:focus {
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
+}
+
+.full-page-form form button {
+    border: 0px;
+    border-radius: 10px;
+    padding: 8px 15px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.full-page-form form button:first-child {
+    background-color: #5cb85c;
+}
+
+.full-page-form form button:nth-child(2) {
+    background-color: #d9534f;
 }
 
 .full-page-form form select {
