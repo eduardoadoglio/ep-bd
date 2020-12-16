@@ -176,9 +176,12 @@ footer {
 
 /* Forms */
 
+.full-page-form {
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+}
+
 .full-page-form .row{
     height: 100vh;
-    /* background-color:rgb(37, 35, 35); */
 }
 
 .full-page-form .row .form{
@@ -187,6 +190,40 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+.full-page-form .row .form .form-content h1 {
+    color: white;
+}
+
+.full-page-form form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.full-page-form form input[type="text"] {
+    padding: 4px 15px;
+    margin: 10px 5px;
+    border: 0px;
+    border-bottom: 1px solid grey;
+}
+
+input[type=text]:focus {
+    outline-width: 0;
+}
+
+.full-page-form form input[type="submit"] {
+    border: 0px;
+    border-radius: 100px;
+    padding: 8px 15px;
+    background-color: rgb(37, 35, 35);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 /* Tabelas */
 

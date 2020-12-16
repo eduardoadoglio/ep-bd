@@ -2,7 +2,6 @@
 session_start();
 include("../../template/header.php");
 include("../../template/menu.php");
-// include("../../template/header.php");
 if(isset($_SESSION['conflito'])){
     $conflito = $_SESSION['conflito'];
 }else{
@@ -38,7 +37,4 @@ if(isset($_SESSION['conflito'])){
         
     </div>
 </body>
-<?php
-// include("../../template/footer.php"); 
-?>
 </html>
