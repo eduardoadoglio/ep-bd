@@ -12,47 +12,81 @@
     <button><a href="#main-content" >V</a></button>
 </div>
 <div class="container-fluid" id="main-content">
-    <section class="services">
-        <h2>Cadastros</h2>
+    <section class="services-section">
+        <div class="services-title">
+            <h2>Cadastros</h2>
+            <span>Aqui é possível realizar o cadastro das seguintes categorias</span>
+        </div>
         <div class="row justify-content-center services-box">
-            <div class="service col-md-4" id="services">
-                <img src="/assets/image/conflitoBelicoIcon.png">
-                <p>
-                    Conflitos belicos sei o que sei que la
-                </p>
-                <button>vai la irmao</button>
+            <div class="service col-md-2" id="services">
+                <div class="service-content">
+                    <div class="service-image">
+                        <img src="/assets/image/conflitoBelicoIcon.png">
+                    </div>
+                    <h3>Conflitos bélicos</h3>
+                    <hr>
+                    <p>
+                        Cadastre um conflito bélico
+                    </p>
+                    <button><a href="view/conflitoBelico/createConflitoBelico.php">CADASTRAR</a></button>
+                </div>
             </div>
-            <div class="service col-md-4">
-                <img src="/assets/image/conflitoBelicoIcon.png">
-                <p>
-                    Conflitos belicos sei o que sei que la
-                </p>
-                <button>vai la irmao</button>
+            <div class="service col-md-2">
+            <div class="service-content">
+                    <div class="service-image">
+                        <img src="/assets/image/grupoMilitarIcon.png">
+                    </div>
+                    <h3>Grupos militares</h3>
+                    <hr>
+                    <p>
+                        Cadastre um grupos militares
+                    </p>
+                    <button><a href="view/grupoMilitar/creategrupoMilitar.php">CADASTRAR</a></button>
+                </div>
             </div>
-            <div class="service col-md-4">
-                <img src="/assets/image/conflitoBelicoIcon.png">
-                <p>
-                    Conflitos belicos sei o que sei que la
-                </p>
-                <button>vai la irmao</button>
+            <div class="service col-md-2">
+                <div class="service-content">
+                    <div class="service-image">
+                        <img src="/assets/image/divisaoIcon.png">
+                    </div>
+                    <h3>Divisões</h3>
+                    <hr>
+                    <p>
+                        Cadastre uma divisão
+                    </p>
+                    <button><a href="view/divisao/createdivisao.php">CADASTRAR</a></button>
+                </div>
             </div>
         </div>
         <div class="row justify-content-center services-box">
-            <div class="service col-md-4">
-                <img src="/assets/image/conflitoBelicoIcon.png">
-                <p>
-                    Conflitos belicos sei o que sei que la
-                </p>
-                <button>vai la irmao</button>
+            <div class="service col-md-2">
+                <div class="service-content">
+                    <div class="service-image">
+                        <img src="/assets/image/liderPoliticoIcon.png">
+                    </div>
+                    <h3>Líderes políticos</h3>
+                    <hr>
+                    <p>
+                        Cadastre um lider político
+                    </p>
+                    <button><a href="view/liderPolitico/createliderPolitico.php">CADASTRAR</a></button>
+                </div>
             </div>
-            <div class="service col-md-4">
-                <img src="/assets/image/conflitoBelicoIcon.png">
-                <p>
-                    Conflitos belicos sei o que sei que la
-                </p>
-                <button>vai la irmao</button>
+            <div class="service col-md-2">
+            <div class="service-content">
+                    <div class="service-image">
+                        <img src="/assets/image/chefeMilitarIcon.png">
+                    </div>
+                    <h3>Chefe militar</h3>
+                    <hr>
+                    <p>
+                        Cadastre um chefe militar
+                    </p>
+                    <button><a href="view/chefeMilitar/createchefeMilitar.php">CADASTRAR</a></button>
+                </div>
             </div>
         </div>
+    </section>
         <h2>Buscas</h2>
         <div class="row content-left">
             <div class="content-text col-md-8">
@@ -70,7 +104,6 @@
                 imaje   
             </div>
         </div>
-    </section>
     <section class="content-section">
         <div class="row content-right">
             <div class="content-image col-md-4">

@@ -1,3 +1,9 @@
+/* General */
+
+* { 
+    font-family: 'Century Gothic';
+}
+
 html, body {
     margin: 0px;
     scroll-behavior: smooth;
@@ -5,6 +11,10 @@ html, body {
 .hidden {
     display: none !important;
     visibility: none !important;
+}
+
+section {
+    padding: 30px 0px;
 }
 
 /* Menu */
@@ -47,6 +57,7 @@ footer {
 /* Hero */
 .home-hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/20258/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -80,23 +91,80 @@ footer {
     text-decoration: none;
 }
 
-/* Services */
-
-.services-box {
-    margin-top: 50px;
+#main-content, .row {
+    padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
-.services-box .service {
+/* Services */
+.services-section {
+    text-align: center;
+    background-color: rgb(37, 35, 35);
+}
+
+.services-section .services-title {
+    margin-bottom: 100px;
+    color: white;
+}
+
+.services-box {
+    margin-top: 100px;
+}
+
+.services-box .service .service-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(255,255,255,0.4);
+    background-color: white;
+    min-height: 300px;
+    min-width: 200px;
 }
+
+.services-box .service .service-content:hover {
+    box-shadow: 0 8px 16px 0 rgba(255,255,255,0.4);
+}
+
+.services-box .service .service-image {
+    border-radius: 100%;
+    margin-top: -100px;
+    padding: 20px;
+    background-color: white;
+}
+
 .services-box .service img {
     width: 80px;
+}
+.services-box .service h3 {
+    margin: 0px;
+    padding: 0px;
 
 }
 
+.services-box .service hr {
+    border-top: 1px solid #DADADE;
+    width: 80%;
+}
+
+.services-box .service p {
+    padding: 20px;
+}
+
+
+.services-box .service button{
+    border: 0px;
+    border-radius: 100px;
+    padding: 8px 15px;
+    background-color: rgb(37, 35, 35);
+}    
+
+.services-box .service a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}    
 /* Criação de chefe militar */
 #grupo-militar-create, #lider-politico-create, #divisao-create{
     display: block;
