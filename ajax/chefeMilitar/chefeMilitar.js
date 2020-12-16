@@ -11,7 +11,14 @@ function handleGrupoMilitarCreationForm(){
 }
 
 function handleLiderPoliticoCreationForm(){
-
+    $("#lider-politico-create").toggleClass('hidden');
+    $("#new-lider-politico-actions").toggleClass('hidden');
+    $("#divisao-create").toggleClass('hidden');
+    $("#lider-politico-container").toggleClass('hidden');
+    if($("#divisao-container").length){
+        $("#divisao-container").remove();
+    }
+    $('#lider-politico-select').val("");
 }
 
 function handleCreationForm(entityType){
@@ -73,6 +80,7 @@ function createGrupoMilitar(grupoMilitarName) {
             $("#new-grupo-militar-actions, #grupo-militar-create").toggleClass('hidden');
             $("#grupo-militar-info").append("Grupo Militar: " + ajaxObj.nomegrupo);
             $("#grupo-militar-select").removeAttr("name");
+            $("#hidden-grupo-militar-id").attr("name", "grupoMilitarId");
             $("#hidden-grupo-militar-id").attr("value", ajaxObj.codigog);
         },
         error: function(result){
@@ -95,6 +103,7 @@ function createLiderPolitico(liderPoliticoName, liderPoliticoApoio, codigoGrupo)
             $("#new-lider-politico-actions, #lider-politico-create").toggleClass('hidden');
             $("#lider-politico-info").append("Lider político: " + ajaxObj.nomel);
             $("#lider-politico-select").removeAttr("name");
+            $("#hidden-lider-politico-name").attr("name", "liderPoliticoName");
             $("#hidden-lider-politico-name").attr("value", ajaxObj.nomel);
         },
         error: function(result){
@@ -120,6 +129,7 @@ function createDivisao(codigoGrupo, numBarcos, numAvioes, numTanques, numHomens)
             $("#new-divisao-actions, #divisao-create").toggleClass('hidden');
             $("#divisao-info").append("Divisão: " + ajaxObj.nrodivisao);
             $("#divisao-select").removeAttr("name");
+            $("#hidden-divisao-id").attr("name", "divisaoId");
             $("#hidden-divisao-id").attr("value", ajaxObj.nrodivisao);
         },
         error: function(result){
@@ -213,7 +223,10 @@ $(document).ready(function(){
         e.preventDefault();
         let liderPoliticoName = $("#lider-politico-name").val();
         let liderPoliticoApoio = $("#lider-politico-apoio").val();
-        let codigoGrupo = $('input[name="grupoMilitarId"]').val();
+        let codigoGrupo = $('#grupo-militar-select option:selected').val();
+        if(codigoGrupo == undefined){
+            codigoGrupo = $('input[name="grupoMilitarId"]').val();
+        }
         createLiderPolitico(liderPoliticoName, liderPoliticoApoio, codigoGrupo);
         $("#new-divisao-actions").toggleClass('hidden');
     });
@@ -231,6 +244,7 @@ $(document).ready(function(){
         if(divisaoId.toLowerCase() == 'outro'){
             return handleCreationForm('divisao');
         }
+
     });
 
     // Criação de uma nova divisão
@@ -240,7 +254,10 @@ $(document).ready(function(){
         let numAvioes = $("#num-avioes").val();
         let numTanques = $("#num-tanques").val();
         let numHomens = $("#num-homens").val();
-        let codigoGrupo = $('input[name="grupoMilitarId"]').val();
+        let codigoGrupo = $('#grupo-militar-select option:selected').val();
+        if(codigoGrupo == undefined){
+            codigoGrupo = $('input[name="grupoMilitarId"]').val();
+        }
         alert(codigoGrupo);
         createDivisao(codigoGrupo, numBarcos, numAvioes, numTanques, numHomens);
         $("#new-divisao-actions").toggleClass('hidden');
