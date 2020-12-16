@@ -12,9 +12,9 @@ Acesse a raíz do repositório em algum terminal e execute o comando
 docker-compose -f docker-compose.yml up
 ```
 
-E então, acessar [localhost](localhost) no seu navegador padrão.
+E então, acessar [localhost](https://localhost) no seu navegador padrão.
 
-Para acessar o pgAdmin, acesse [localhost:5050](localhost:5050).  
+Para acessar o pgAdmin, acesse [localhost:5050](https://localhost:5050).  
 O login é:  
 Usuário: user@email.com  
 Senha: secret  
