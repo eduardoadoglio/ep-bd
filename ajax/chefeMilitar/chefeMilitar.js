@@ -21,6 +21,13 @@ function handleLiderPoliticoCreationForm(){
     $('#lider-politico-select').val("");
 }
 
+function handleDivisaoCreationForm(){
+    $("#divisao-create").toggleClass('hidden');
+    $("#new-divisao-actions").toggleClass('hidden');
+    $("#divisao-container").toggleClass('hidden');
+    $('#divisao-select').val("");
+}
+
 function handleCreationForm(entityType){
     switch(entityType){
         case 'grupo-militar':
@@ -239,7 +246,6 @@ $(document).ready(function(){
 
     // Após selecionar um líder político
     $('body').on('change', '#divisao-select', function(){
-        $("#divisao-select option").not('option:first').remove();
         let divisaoId = $("#divisao-select option:selected").val();
         if(divisaoId.toLowerCase() == 'outro'){
             return handleCreationForm('divisao');
@@ -258,7 +264,6 @@ $(document).ready(function(){
         if(codigoGrupo == undefined){
             codigoGrupo = $('input[name="grupoMilitarId"]').val();
         }
-        alert(codigoGrupo);
         createDivisao(codigoGrupo, numBarcos, numAvioes, numTanques, numHomens);
         $("#new-divisao-actions").toggleClass('hidden');
     });
