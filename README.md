@@ -6,7 +6,7 @@
 
 ## Como utilizar
 
-Acesse a raíz do arquivo em algum terminal e execute o comando
+Acesse a raíz do repositório em algum terminal e execute o comando
 
 ```bat
 docker-compose -f docker-compose.yml up
