@@ -407,3 +407,33 @@ INSERT INTO Pais (Codigo, Pais) VALUES (1, 'Brasil');
 INSERT INTO Pais (Codigo, Pais) VALUES (1, 'EUA');
 INSERT INTO Pais (Codigo, Pais) VALUES (2, 'Síria');
 INSERT INTO Pais (Codigo, Pais) VALUES (2, 'Ceará');
+
+INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (1, 'ONU', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (2, 'EACHESUNIDAS', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (3, 'IMELIXO', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (4, 'ICMSSAURO', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (5, 'POLITRECOS', 'Humanitaria', 'Humanitaria', 2, 1);
+
+INSERT INTO DEMedia (CodigoOrg, Codigo, DataEntrada) VALUES (1, 1, NOW());
+INSERT INTO DEMedia (CodigoOrg, Codigo, DataEntrada) VALUES (2, 2, NOW());
+INSERT INTO DEMedia (CodigoOrg, Codigo, DataEntrada) VALUES (1, 2, NOW());
+INSERT INTO DEMedia (CodigoOrg, Codigo, DataEntrada) VALUES (1, 3, NOW());
+INSERT INTO DEMedia (CodigoOrg, Codigo, DataEntrada) VALUES (2, 3, NOW());
+
+
+INSERT INTO DSMedia (CodigoOrg, Codigo, DataSaida) VALUES (2, 2, NOW());
+INSERT INTO DSMedia (CodigoOrg, Codigo, DataSaida) VALUES (1, 3, NOW());
+
+INSERT INTO TipoArma (NomeArma, Indicador) VALUES ('AK-47', 1);
+INSERT INTO TipoArma (NomeArma, Indicador) VALUES ('Python', 2);
+INSERT INTO TipoArma (NomeArma, Indicador) VALUES ('Sniper XPTO', 2);
+INSERT INTO TipoArma (NomeArma, Indicador) VALUES ('M200 intervention', 2);
+INSERT INTO TipoArma (NomeArma, Indicador) VALUES ('Barret M82' , 3);
+INSERT INTO TipoArma (NomeArma, Indicador) VALUES ('Faquinha', 3);
+
+
+INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'AK-47', 'Eduardo', 252);
+INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (2, 'AK-47', 'Eduardo', 135);
+INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'Python', 'Nishida', 573);
+INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'M200 intervention', 'Viti1', 785);
+INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'Faquinhas', 'Haka', 5);
