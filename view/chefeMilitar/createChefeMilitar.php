@@ -62,18 +62,21 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
         <div id="divisao-create" class="hidden">
             Descreva a divisão <br>
             N° de barcos: <br>
-            <input type="number" name="barcos"> <br>
+            <input type="number" id="num-barcos"> <br>
             N° de avioes: <br>
-            <input type="number" name="avioes"> <br>
+            <input type="number" id="num-avioes"> <br>
             N° de tanques: <br>
-            <input type="number" name="tanques"> <br>
+            <input type="number" id="num-tanques"> <br>
             N° de homens: <br>
-            <input type="number" name="homens"> <br>
+            <input type="number" id="num-homens"> <br>
             <div id="new-divisao-actions" class="hidden">
                 <button id="new-divisao-submit">Criar</button>
                 <button id="new-divisao-cancel">&times</button>
             </div>
-        </div><br>
+        </div>
+		<div id="divisao-info">
+			<input type="hidden" name="divisaoId" id="hidden-divisao-id">
+        </div>
 
         <input type="submit" value="Enviar" id="create-chefe-militar-submit">
     </form>
