@@ -140,7 +140,7 @@ footer {
 .services-box .service h3 {
     margin: 0px;
     padding: 0px;
-
+    font-size: 20px;
 }
 
 .services-box .service hr {
@@ -153,18 +153,17 @@ footer {
 }
 
 
-.services-box .service button{
+.services-box .service a button{
     border: 0px;
     border-radius: 100px;
     padding: 8px 15px;
     background-color: rgb(37, 35, 35);
-}    
-
-.services-box .service a {
     color: white;
     font-weight: bold;
     text-decoration: none;
-}    
+    cursor: pointer;
+} 
+
 /* Criação de chefe militar */
 #grupo-militar-create, #lider-politico-create, #divisao-create{
     display: block;

@@ -1,4 +1,3 @@
-<html>
 <?php
     include("template/header.php");
     include("template/menu.php");
@@ -28,7 +27,7 @@
                     <p>
                         Cadastre um conflito bélico
                     </p>
-                    <button><a href="view/conflitoBelico/createConflitoBelico.php">CADASTRAR</a></button>
+                    <a href="/view/conflito/createConflitoBelico.php"><button>CADASTRAR</button></a>
                 </div>
             </div>
             <div class="service col-md-2">
@@ -41,7 +40,7 @@
                     <p>
                         Cadastre um grupos militares
                     </p>
-                    <button><a href="view/grupoMilitar/creategrupoMilitar.php">CADASTRAR</a></button>
+                    <a href="view/grupoMilitar/creategrupoMilitar.php"><button>CADASTRAR</button></a>
                 </div>
             </div>
             <div class="service col-md-2">
@@ -54,7 +53,7 @@
                     <p>
                         Cadastre uma divisão
                     </p>
-                    <button><a href="view/divisao/createdivisao.php">CADASTRAR</a></button>
+                    <a href="view/divisao/createdivisao.php"><button>CADASTRAR</button></a>
                 </div>
             </div>
         </div>
@@ -69,7 +68,7 @@
                     <p>
                         Cadastre um lider político
                     </p>
-                    <button><a href="view/liderPolitico/createliderPolitico.php">CADASTRAR</a></button>
+                    <a href="view/liderPolitico/createliderPolitico.php"><button>CADASTRAR</button></a>
                 </div>
             </div>
             <div class="service col-md-2">
@@ -82,7 +81,7 @@
                     <p>
                         Cadastre um chefe militar
                     </p>
-                    <button><a href="view/chefeMilitar/createchefeMilitar.php">CADASTRAR</a></button>
+                    <a href="view/chefeMilitar/createchefeMilitar.php"><button>CADASTRAR</button></a>
                 </div>
             </div>
         </div>
