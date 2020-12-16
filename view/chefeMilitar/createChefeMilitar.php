@@ -36,44 +36,47 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
             </select> <br>
         </div>
         <div id="grupo-militar-info">
-			<input type="hidden" name="grupoMilitarId" id="hidden-grupo-militar-id">
+			<input type="hidden" id="hidden-grupo-militar-id">
         </div>
-        <div id="grupo-militar-create">
+        <div id="grupo-militar-create" class="hidden">
             Diga o nome do grupo militar <br>
             <input type="text" id="grupo-militar-name">
-            <div id="new-grupo-militar-actions">
+            <div id="new-grupo-militar-actions" class="hidden">
                 <button id="new-grupo-militar-submit">Criar</button>
                 <button id="new-grupo-militar-cancel">&times</button>
             </div>
         </div>
-        <div id="lider-politico-create">
+        <div id="lider-politico-create" class="hidden">
             Diga o nome do líder político <br>
             <input type="text" id="lider-politico-name"> <br>
             Digite os apoios desse lider <br>
             <input type="text" id="lider-politico-apoio">
-            <div id="new-lider-politico-actions">
+            <div id="new-lider-politico-actions" class="hidden">
                 <button id="new-lider-politico-submit">Criar</button>
                 <button id="new-lider-politico-cancel">&times</button>
             </div>
         </div>
 		<div id="lider-politico-info">
-			<input type="hidden" name="liderPoliticoName" id="hidden-lider-politico-name">
+			<input type="hidden" id="hidden-lider-politico-name">
         </div>
-        <div id="divisao-create">
+        <div id="divisao-create" class="hidden">
             Descreva a divisão <br>
             N° de barcos: <br>
-            <input type="number" name="barcos"> <br>
+            <input type="number" id="num-barcos"> <br>
             N° de avioes: <br>
-            <input type="number" name="avioes"> <br>
+            <input type="number" id="num-avioes"> <br>
             N° de tanques: <br>
-            <input type="number" name="tanques"> <br>
+            <input type="number" id="num-tanques"> <br>
             N° de homens: <br>
-            <input type="number" name="homens"> <br>
-            <div id="new-divisao-actions">
+            <input type="number" id="num-homens"> <br>
+            <div id="new-divisao-actions" class="hidden">
                 <button id="new-divisao-submit">Criar</button>
                 <button id="new-divisao-cancel">&times</button>
             </div>
-        </div><br>
+        </div>
+		<div id="divisao-info">
+			<input type="hidden" id="hidden-divisao-id">
+        </div>
 
         <input type="submit" value="Enviar" id="create-chefe-militar-submit">
     </form>
