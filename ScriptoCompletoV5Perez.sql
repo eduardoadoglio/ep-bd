@@ -436,4 +436,4 @@ INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'AK-47', 
 INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (2, 'AK-47', 'Eduardo', 135);
 INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'Python', 'Nishida', 573);
 INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'M200 intervention', 'Viti1', 785);
-INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'Faquinhas', 'Haka', 5);
+INSERT INTO Fornece (CodigoG, NomeArma, NomeTraf, NumArmas) VALUES (1, 'Faquinha', 'Haka', 5);
