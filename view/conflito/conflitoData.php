@@ -13,7 +13,7 @@ if(isset($_SESSION['conflito'])){
     <div class="container-fluid table-content">
         <div class="row">
             <div class="col-md-12">
-                <h1>Divisão criada</h1>
+                <h1>Conflito criado</h1>
                 <table class="table-data">
                     <thead>
                         <tr>
