@@ -118,14 +118,14 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(255,255,255,0.4);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     background-color: white;
     min-height: 300px;
     min-width: 200px;
 }
 
 .services-box .service .service-content:hover {
-    box-shadow: 0 8px 16px 0 rgba(255,255,255,0.4);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
 }
 
 .services-box .service .service-image {
