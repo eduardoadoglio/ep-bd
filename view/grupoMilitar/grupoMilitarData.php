@@ -38,4 +38,3 @@ if(isset($_SESSION['grupoMilitar'])){
     </div>
 </body>
 </html>
-</html>

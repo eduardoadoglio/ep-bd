@@ -209,7 +209,14 @@ footer {
     border-bottom: 1px solid grey;
 }
 
-input[type=text]:focus {
+.full-page-form form input[type="number"] {
+    padding: 4px 15px;
+    margin: 0px 5px;
+    border: 0px;
+    border-bottom: 1px solid grey;
+}
+
+input:focus {
     outline-width: 0;
 }
 
@@ -222,6 +229,10 @@ input[type=text]:focus {
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
+}
+
+.full-page-form form select {
+    margin-bottom: 20px;
 }
 
 
