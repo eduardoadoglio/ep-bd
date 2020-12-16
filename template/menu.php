@@ -1,5 +1,5 @@
 <div class="menu">
-    <div class="logo"><a href="/"><img src="../assets/image/trabalhoLogo.png"></a></div>
+    <div class="logo"><a href="/"><img src="/assets/image/trabalhoLogo.png"></a></div>
     <div class="links">
         <a href="/view/conflito/conflitosBelicos.php">Conflitos Bélicos</a>
         <a href="/view/grupoMilitar/grupoMilitar.php">Grupos militares</a>
