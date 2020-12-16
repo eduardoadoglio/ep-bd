@@ -20,15 +20,7 @@ class Divisao {
         ));
         return $this->database->getLastInsertId();
     }
-
-    function updateDivisao($name){
-
-    }
-
-    function deleteDivisao($name){
-
-    }
-
+    
     function getDivisaoById($codigog, $id){
         $response = $this->database->executeQuery("SELECT * FROM divisao WHERE codigog = :codigog AND nrodivisao = :id;", array(
             ":codigog" => $codigog,
