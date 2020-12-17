@@ -9,11 +9,11 @@
     <?php
         if(count($divisoes) > 0):
     ?>
-    <div class="container-fluid table-content">
+    <div class="container-fluid table-content ">
         <div class="row">
             <div class="col-md-12">
                 <h1>Todas as divisões</h1>
-                <table class="table-data">
+                <table class="table-data table-list-all">
                     <thead>
                         <tr>
                             <?php

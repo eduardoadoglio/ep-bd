@@ -280,10 +280,17 @@ input:focus {
     font-weight: bold;
 }
 
-.table-data {
-    height: max-height;
-    display: inline-block;
+.table-data.table-list-all {
+    width: auto;
+    height: 60vh;
     overflow-y: scroll;
+}
+.table-data {
+    display: inline-block;
+    width: 800px;
+    height: auto;
+    max-height: 60vh;
+    overflow: hidden;
     border-collapse: collapse;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
