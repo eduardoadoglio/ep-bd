@@ -33,6 +33,15 @@ class GrupoMilitar {
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getGrupoMilitarByGun(){
+        $response = $this->database->executeQuery("SELECT GrupoArmado.NomeGrupo, NomeTraf, resultado.nomeArma FROM (SELECT NomeArma, CodigoG, NomeTraf FROM Fornece WHERE NomeArma = 'Barret M82' OR NomeArma = 'M200 intervention') AS resultado JOIN GrupoArmado ON resultado.CodigoG = GrupoArmado.codigoG;");
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+    }
+    function getGrupoMilitarByGunNumber(){
+        $response = $this->database->executeQuery("SELECT resultado.CodigoG, NomeGrupo,resultado.somaArmas  FROM (SELECT CodigoG, SUM(NumArmas) AS somaArmas FROM Fornece GROUP BY (CodigoG) ORDER BY SUM(NumArmas) DESC LIMIT 5) AS resultado JOIN GrupoArmado ON GrupoArmado.CodigoG = resultado.CodigoG;");
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     function getAllGruposMilitares(){
         $response = $this->database->executeQuery("SELECT * FROM grupoarmado;");
         return $response->fetchAll(PDO::FETCH_ASSOC);

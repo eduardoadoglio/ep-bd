@@ -1,7 +1,7 @@
 /* General */
 
 * { 
-    font-family: 'Century Gothic';
+    font-family: 'Open Sans', sans-serif;
 }
 
 html, body {
@@ -281,7 +281,7 @@ input:focus {
 }
 
 .table-data {
-    height: 60vh;
+    height: max-height;
     display: inline-block;
     overflow-y: scroll;
     border-collapse: collapse;

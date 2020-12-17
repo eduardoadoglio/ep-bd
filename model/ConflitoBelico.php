@@ -32,6 +32,11 @@ class ConflitoBelico {
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getConflitoBelicoOrderdByDeaths(){
+        $response = $this->database->executeQuery("SELECT Nome, NumMortos FROM Conflito ORDER BY (NumMortos) DESC LIMIT 5;");
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getAllConflitosBelicos($name){
         
     }
