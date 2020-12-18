@@ -10,20 +10,56 @@ class ConflitoBelico {
         $this->database = new Database();
     }
 
-    public function createConflitoBelico($name){
+    public function createConflitoBelico($name, $tipo, $info){
         $this->database->executeQuery("INSERT INTO conflito (nummortos, numferidos, nome) VALUES (0, 0, :name)", array(
             ":name" => $name
         ));
-        return $this->database->getLastInsertId();
+        $id = $this->database->getLastInsertId();
+        switch($tipo){
+            case 'economico':
+                return $this->createConflitoEconomico($id, $info);
+            break;
+            case 'religioso':
+                return $this->createConflitoReligioso($id, $info);
+            break;
+            case 'territorial':
+                return $this->createConflitoTerritorial($id, $info);
+            break;
+            case 'racial':
+                return $this->createConflitoRacial($id, $info);
+            break;
+        }
     }
 
-    public function updateConflitoBelico($name){
-        
+    public function createConflitoEconomico($id, $matprima) {
+        $this->database->executeQuery("INSERT INTO economico (codigo, matprima) VALUES (:id, :matprima)", array(
+            ":id" => $id,
+            ":matprima" => $matprima
+        ));
+        return $id;
+    }
+    public function createConflitoReligioso($id, $religiao) {
+        $this->database->executeQuery("INSERT INTO religioso (codigo, religiao) VALUES (:id, :religiao)", array(
+            ":id" => $id,
+            ":religiao" => $religiao
+        ));
+        return $id;
+    }
+    public function createConflitoTerritorial($id, $regiao) {
+        $this->database->executeQuery("INSERT INTO territorial (codigo, regiao) VALUES (:id, :regiao)", array(
+            ":id" => $id,
+            ":regiao" => $regiao
+        ));
+        return $id;
+    }
+    public function createConflitoRacial($id, $etnia) {
+        $this->database->executeQuery("INSERT INTO racial (codigo, etnia) VALUES (:id, :etnia)", array(
+            ":id" => $id,
+            ":etnia" => $etnia
+        ));
+        return $id;
     }
 
-    public function deleteConflitoBelico($name){
-
-    }
 
     public function getConflitoBelicoById($id){
         $response = $this->database->executeQuery("SELECT * FROM conflito WHERE codigo = :id", array(
