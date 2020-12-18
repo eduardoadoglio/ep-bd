@@ -42,8 +42,38 @@ class ConflitoBelico {
         return $response->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getAllConflitosBelicos($name){
-        
+    public function getCountOfConflitos(){
+        $response = $this->database->executeQuery("SELECT COUNT(*) FROM conflito;");
+        return $response->fetch(PDO::FETCH_ASSOC)['count'];
+    }
+    public function getCountOfConflitosEconomicos(){
+        $response = $this->database->executeQuery("SELECT COUNT(*) FROM economico;");
+        return $response->fetch(PDO::FETCH_ASSOC)['count'];
+    }
+
+    public function getCountOfConflitosRaciais(){
+        $response = $this->database->executeQuery("SELECT COUNT(*) FROM racial;");
+        return $response->fetch(PDO::FETCH_ASSOC)['count'];
+    }
+
+    public function getCountOfConflitosReligiosos(){
+        $response = $this->database->executeQuery("SELECT COUNT(*) FROM religioso;");
+        return $response->fetch(PDO::FETCH_ASSOC)['count'];
+    }
+    
+
+    public function getCountOfConflitosTerritoriais(){
+        $response = $this->database->executeQuery("SELECT COUNT(*) FROM territorial;");
+        return $response->fetch(PDO::FETCH_ASSOC)['count'];
+    }
+
+    public function generateConflitoHistogramArray(){
+        return array(
+            "Econômicos" => $this->getCountOfConflitosEconomicos(),
+            "Raciais" => $this->getCountOfConflitosRaciais(),
+            "Religiosos" => $this->getCountOfConflitosReligiosos(),
+            "Territoriais" => $this->getCountOfConflitosTerritoriais()
+        );
     }
 
 }
