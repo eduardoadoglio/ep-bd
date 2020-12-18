@@ -1,5 +1,14 @@
 /* General */
 
+@keyframes arrow-animation {
+    0%    {margin-top:10px;}
+    25%   {margin-top:20px;}
+    50%   {margin-top:30px;}
+    75%   {margin-top: 20px;}
+    100%  {margin-top: 10px;}
+}
+
+
 * { 
     font-family: 'Open Sans', sans-serif;
 }
@@ -98,6 +107,12 @@ footer {
     margin-top: 10px;
     background-color: transparent;
     border: 0px;
+}
+
+.home-hero button:hover {
+    animation-name: arrow-animation;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
 }
 
 .home-hero button a {
