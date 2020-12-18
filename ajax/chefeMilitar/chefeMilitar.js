@@ -154,7 +154,7 @@ function addLideresPoliticosToSelect(lideresPoliticos){
 
 function handleDivisaoCancel() {
     $("#new-divisao-actions").addClass('hidden');
-    if($("#hidden-lider-politico-name").attr("value")){
+    if($("#lider-politico-container").hasClass("hidden")){
         $("#divisao-info").after('<div id="divisao-container"> Selecione uma divisão <br><select id="divisao-select"><option value="" disabled selected> -- </option></select></div>');
         $("#divisao-select option").not('option:first').remove();
         getDivisoesFromLiderPolitico($("#hidden-lider-politico-name").val());

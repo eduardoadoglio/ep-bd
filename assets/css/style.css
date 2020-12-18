@@ -228,6 +228,10 @@ footer {
     display: inline-block;
 }
 
+#new-divisao-actions {
+    margin: 20px 0px;
+}
+
 #grupo-militar-info, #lider-politico-info, #divisao-info {
     margin-bottom: 10px;
 }
@@ -283,6 +287,7 @@ input:focus {
     border: 0px;
     border-radius: 100px;
     padding: 8px 15px;
+    margin-top: 20px;
     background-color: rgb(37, 35, 35);
     color: white;
     font-weight: bold;
