@@ -29,13 +29,7 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
                         Faixa: <br>
                         <input type="text" required name="chefeMilitarFaixa"> <br>
                         <div id="grupo-militar-info">
-                            <input type="hidden" name="grupoMilitarId" id="hidden-grupo-militar-id">
-                        </div>
-                        <div id="lider-politico-info">
-                            <input type="hidden" name="liderPoliticoName" id="hidden-lider-politico-name">
-                        </div>
-                        <div id="divisao-info">
-                            <input type="hidden" name="divisaoId" id="hidden-divisao-id">
+                            <input type="hidden" name="grupoMilitarId" id="hidden-grupo-militar-id" required>
                         </div>
                         <div id="grupo-militar-container">
                             Selecione um grupo militar <br>
@@ -57,6 +51,9 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
                                 <button id="new-grupo-militar-cancel">&times</button>
                             </div>
                         </div>
+                        <div id="lider-politico-info">
+                            <input type="hidden" name="liderPoliticoName" id="hidden-lider-politico-name" required>
+                        </div>
                         <div id="lider-politico-create" class="hidden">
                             Diga o nome do líder político <br>
                             <input type="text" id="lider-politico-name"> <br>
@@ -67,7 +64,9 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
                                 <button id="new-lider-politico-cancel">&times</button>
                             </div>
                         </div>
-                        
+                        <div id="divisao-info">
+                            <input type="hidden" name="divisaoId" id="hidden-divisao-id" required>
+                        </div>
                         <div id="divisao-create" class="hidden">
                             Descreva a divisão <br>
                             N° de barcos: <br>

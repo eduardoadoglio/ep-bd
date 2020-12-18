@@ -185,6 +185,10 @@ footer {
     display: inline-block;
 }
 
+#grupo-militar-info, #lider-politico-info, #divisao-info {
+    margin-bottom: 10px;
+}
+
 /* Forms */
 
 .full-page-form {
