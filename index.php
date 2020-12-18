@@ -177,7 +177,7 @@
         data: {
             labels: <?php echo json_encode(array_keys($allConflitos)); ?>,
             datasets: [{
-                label: 'Número de conflitos',
+                label: ['Número de conflitos'],
                 data: <?php echo json_encode(array_values($allConflitos)); ?>,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
