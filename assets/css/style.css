@@ -287,7 +287,8 @@ input:focus {
 }
 .table-data {
     display: inline-block;
-    width: 800px;
+    width: auto;
+    max-width: 800px;
     height: auto;
     max-height: 60vh;
     overflow: hidden;
