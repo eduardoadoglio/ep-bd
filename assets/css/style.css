@@ -239,7 +239,8 @@ footer {
 }
 
 .full-page-form .row{
-    height: 100vh;
+    padding: 100px 0px;
+    min-height: 100vh;
 }
 
 .full-page-form .row .form{
