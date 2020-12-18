@@ -383,10 +383,10 @@ CREATE TRIGGER InsertDelOrUpdDivisao BEFORE INSERT OR DELETE OR UPDATE ON Divisa
   FOR EACH ROW EXECUTE PROCEDURE InsertDelOrUpdDivisao();
 
 
-INSERT INTO GrupoArmado (CodigoG, NomeGrupo) VALUES (1, 'EACH');
-INSERT INTO GrupoArmado (CodigoG, NomeGrupo) VALUES (2, 'IME');
-INSERT INTO GrupoArmado (CodigoG, NomeGrupo) VALUES (3, 'ICMC');
-INSERT INTO GrupoArmado (CodigoG, NomeGrupo) VALUES (4, 'UNICAMP');
+INSERT INTO GrupoArmado (NomeGrupo) VALUES ('EACH');
+INSERT INTO GrupoArmado (NomeGrupo) VALUES ('IME');
+INSERT INTO GrupoArmado (NomeGrupo) VALUES ('ICMC');
+INSERT INTO GrupoArmado (NomeGrupo) VALUES ('UNICAMP');
 
 INSERT INTO LiderPolitico (CodigoG, NomeL, Apoios) VALUES (1, 'Nabio Fakano', 'Digimon');
 INSERT INTO LiderPolitico (CodigoG, NomeL, Apoios) VALUES (2, 'MODRIGO RELLO', 'SPATULA');
@@ -394,17 +394,17 @@ INSERT INTO LiderPolitico (CodigoG, NomeL, Apoios) VALUES (2, 'MODRIGO RELLO', '
 INSERT INTO Divisao (CodigoG, NumBaixasD, Barcos, Avioes, Tanques, Homens) VALUES (1, 2, 2, 2, 2, 2);
 INSERT INTO Divisao (CodigoG, NumBaixasD, Barcos, Avioes, Tanques, Homens) VALUES (2, 2, 2, 2, 2, 2);
 
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (1, 'Tenente', 'Nabio Fakano', 1, 1);
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (2, 'Tenente', 'Nabio Fakano', 1, 1);
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (3, 'Tenente', 'Nabio Fakano', 1, 1);
+INSERT INTO ChefeMilitar (Faixa, NomeL, CodigoG, NroDivisao) VALUES ('Tenente', 'Nabio Fakano', 1, 1);
+INSERT INTO ChefeMilitar (Faixa, NomeL, CodigoG, NroDivisao) VALUES ('Tenente', 'Nabio Fakano', 1, 1);
+INSERT INTO ChefeMilitar (Faixa, NomeL, CodigoG, NroDivisao) VALUES ('Tenente', 'Nabio Fakano', 1, 1);
 
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (4, 'Tenente', 'MODRIGO RELLO', 2, 1);
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (5, 'Tenente', 'MODRIGO RELLO', 2, 1);
-INSERT INTO ChefeMilitar (codigoChef, Faixa, NomeL, CodigoG, NroDivisao) VALUES (6, 'Tenente', 'MODRIGO RELLO', 2, 1);
+INSERT INTO ChefeMilitar (Faixa, NomeL, CodigoG, NroDivisao) VALUES ('Tenente', 'MODRIGO RELLO', 2, 1);
+INSERT INTO ChefeMilitar (Faixa, NomeL, CodigoG, NroDivisao) VALUES ('Tenente', 'MODRIGO RELLO', 2, 1);
+INSERT INTO ChefeMilitar (Faixa, NomeL, CodigoG, NroDivisao) VALUES ('Tenente', 'MODRIGO RELLO', 2, 1);
 
-INSERT INTO Conflito (Codigo, NumMortos, NumFeridos, Nome) VALUES (1, 200, 200, 'Assalto da esquina');
-INSERT INTO Conflito (Codigo, NumMortos, NumFeridos, Nome) VALUES (2, 28, 37, 'Assalto da EACH');
-INSERT INTO Conflito (Codigo, NumMortos, NumFeridos, Nome) VALUES (3, 22, 10, 'Assalto da UNICAMP');
+INSERT INTO Conflito (NumMortos, NumFeridos, Nome) VALUES (200, 200, 'Assalto da esquina');
+INSERT INTO Conflito (NumMortos, NumFeridos, Nome) VALUES (28, 37, 'Assalto da EACH');
+INSERT INTO Conflito (NumMortos, NumFeridos, Nome) VALUES (22, 10, 'Assalto da UNICAMP');
 
 INSERT INTO DEGrupo (Codigo, CodigoG, DataEntrada) VALUES (1, 1, NOW());
 INSERT INTO DEGrupo (Codigo, CodigoG, DataEntrada) VALUES (1, 2, NOW());
@@ -417,11 +417,11 @@ INSERT INTO Pais (Codigo, Pais) VALUES (1, 'EUA');
 INSERT INTO Pais (Codigo, Pais) VALUES (2, 'Síria');
 INSERT INTO Pais (Codigo, Pais) VALUES (2, 'Ceará');
 
-INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (1, 'ONU', 'Humanitaria', 'Humanitaria', 2, 1);
-INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (2, 'EACHESUNIDAS', 'Humanitaria', 'Humanitaria', 2, 1);
-INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (3, 'IMELIXO', 'Humanitaria', 'Humanitaria', 2, 1);
-INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (4, 'ICMSSAURO', 'Humanitaria', 'Humanitaria', 2, 1);
-INSERT INTO OrganizacaoM (CodigoOrg, NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES (5, 'POLITRECOS', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES ('ONU', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES ('EACHESUNIDAS', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES ('IMELIXO', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES ('ICMSSAURO', 'Humanitaria', 'Humanitaria', 2, 1);
+INSERT INTO OrganizacaoM (NomeOrg, TipoAjuda, Tipo, NumPessoas, Depende) VALUES ('POLITRECOS', 'Humanitaria', 'Humanitaria', 2, 1);
 
 INSERT INTO DEMedia (CodigoOrg, Codigo, DataEntrada) VALUES (1, 1, NOW());
 INSERT INTO DEMedia (CodigoOrg, Codigo, DataEntrada) VALUES (2, 2, NOW());
