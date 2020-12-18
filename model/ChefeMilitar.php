@@ -42,6 +42,11 @@ class ChefeMilitar {
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getAllChefeMilitar(){
+        $response = $this->database->executeQuery("SELECT * FROM chefemilitar");
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     function getAllChefesMilitares(){
 
     }
