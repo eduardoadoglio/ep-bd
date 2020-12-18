@@ -36,7 +36,7 @@ class GrupoMilitar {
     }
 
     function getGrupoMilitarByGunNumber(){
-        $response = $this->database->executeQuery("SELECT resultado.CodigoG, NomeGrupo,resultado.somaArmas  FROM (SELECT CodigoG, SUM(NumArmas) AS somaArmas FROM Fornece GROUP BY (CodigoG) ORDER BY SUM(NumArmas) DESC LIMIT 5) AS resultado JOIN GrupoArmado ON GrupoArmado.CodigoG = resultado.CodigoG;");
+        $response = $this->database->executeQuery("SELECT * FROM (SELECT resultado.CodigoG, NomeGrupo,resultado.somaArmas  FROM (SELECT CodigoG, SUM(NumArmas) AS somaArmas FROM Fornece GROUP BY (CodigoG) ORDER BY SUM(NumArmas) DESC LIMIT 5) AS resultado JOIN GrupoArmado ON GrupoArmado.CodigoG = resultado.CodigoG) AS restultado2 ORDER BY(somaArmas) DESC;");
         return $response->fetchAll(PDO::FETCH_ASSOC);
     }
 
