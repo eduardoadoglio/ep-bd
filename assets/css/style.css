@@ -199,13 +199,6 @@ footer {
     text-align: center;
 }
 
-.content-section .content-left h3 {
-    text-align: left;
-}
-.content-section .content-right h3 {
-    text-align: right;
-}
-
 .content-section .content-left, .content-section .content-right {
     padding: 30px;
 }
