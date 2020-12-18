@@ -149,11 +149,10 @@
         </div>
         <div class="row content content-center">
             <div class="content-text col-md-12">
-            <h3>Histograma</h3>
-            <div class="chart-container">
-                <canvas id="histograma" width="400" height="400"></canvas>
-            </div>
-            <!-- <?php //$utils->IndexQueryLists($gruposMiliByGuns, 'Grupo Militar/Fornece'); ?> -->
+                <h3>Histograma</h3>
+                <div class="chart-container">
+                    <canvas id="histograma" width="400" height="400"></canvas>
+                </div>
             </div>
         </div>
     </section>
