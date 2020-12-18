@@ -10,6 +10,7 @@ class Divisao {
         $this->database = new Database();
     }
     
+
     function createDivisao($id, $barcos, $avioes, $tanques, $homens){
         $this->database->executeQuery("INSERT INTO divisao (codigog, numbaixasd, barcos, avioes, tanques, homens) VALUES (:codigog, 0, :barcos, :avioes, :tanques, :homens)", array(
             ":codigog" => $id,
@@ -18,7 +19,7 @@ class Divisao {
             ":tanques" => $tanques,
             ":homens" => $homens
         ));
-        return $this->database->getLastInsertId();
+        return $this->getLastId($id);
     }
     
     function getDivisaoById($codigog, $id){
@@ -46,6 +47,13 @@ class Divisao {
     function getAllDivisoes(){
         $response = $this->database->executeQuery("SELECT * FROM divisao;", array());
         return $response->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getLastId($id){
+        $response = $this->database->executeQuery("SELECT coalesce(MAX(Divisao.NroDivisao), 0) FROM Divisao WHERE Divisao.CodigoG = :codg;", array(
+            ":codg" => $id
+        ));
+        return $response->fetch(PDO::FETCH_ASSOC)['coalesce'];
     }
 
 }

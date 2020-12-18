@@ -24,8 +24,8 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
         <div class="row justify-content-center">
             <div class="col-md-12 form">
                 <div class="form-content">
-                    <h1>Criação de grupo militar</h1>
-                    <form action="../../action/chefeMilitar/createchefeMilitar.php" method="POST">
+                    <h1>Criação de chefe militar</h1>
+                    <form action="../../action/chefeMilitar/createChefeMilitar.php" method="POST">
                         Faixa: <br>
                         <input type="text" required name="chefeMilitarFaixa"> <br>
                         <div id="grupo-militar-container">

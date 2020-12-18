@@ -1,5 +1,5 @@
 <?php
-require_once('../../model/liderPolitico.php');
+require_once('../../model/LiderPolitico.php');
 $liderPoliticoObj = new LiderPolitico();
 $grupoMilitarId = $_REQUEST['grupoMilitarId'];
 

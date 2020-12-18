@@ -12,13 +12,19 @@ class ChefeMilitar {
     }
     
     function createChefeMilitar($faixa, $nrodivisao, $codigog, $nomel){
-        $this->database->executeQuery("INSERT INTO chefemilitar (faixa, nrodivisao, codigog, nomel) VALUES (:faixa, :nrodivisao, :codigog, :nomel)", array(
-            ":faixa" => $faixa,
-            ":nrodivisao" => $nrodivisao,
-            ":codigog" => $codigog,
-            ":nomel" => $nomel,
-        ));
-        return $this->database->getLastInsertId();
+
+        try {
+            $this->database->executeQuery("INSERT INTO chefemilitar (faixa, nrodivisao, codigog, nomel) VALUES (:faixa, :nrodivisao, :codigog, :nomel)", array(
+                ":faixa" => $faixa,
+                ":nrodivisao" => $nrodivisao,
+                ":codigog" => $codigog,
+                ":nomel" => $nomel,
+            ));
+            return $this->database->getLastInsertId();
+        } catch(Exception $e){
+            echo 'Errozao: '.$e->getMessage();
+            return $e;
+        }
     }
 
     function updateChefeMilitar($name){

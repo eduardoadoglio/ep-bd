@@ -36,6 +36,11 @@ class LiderPolitico {
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getAllLiderPolitico(){
+        $response = $this->database->executeQuery("SELECT * FROM liderpolitico");
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     function getLiderPoliticoByGrupoMilitarId($codigog){
         $response = $this->database->executeQuery("SELECT * FROM liderpolitico WHERE codigog = :codigog;", array(
             ":codigog" => $codigog
