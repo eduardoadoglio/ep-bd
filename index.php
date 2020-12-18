@@ -113,12 +113,10 @@
                 
             </div>
             <div class="content-image col-md-4">
-                imaje  
             </div>
         </div>
         <div class="row content content-right">
             <div class="content-image col-md-4">
-                imaje   
             </div>
             <div class="content-text col-md-8">
             <h3>Listar os 5 maiores conflitos em número de mortos</h3>
@@ -130,13 +128,11 @@
             <h3>Listar as 5 maiores organizações em número de mediações</h3>
             <?php $utils->IndexQueryLists($organizacoes, 'Organizacao Mediadora'); ?>
             </div>
-            <div class="content-image col-md-4">
-                imaje   
+            <div class="content-image col-md-4">  
             </div>
         </div>
         <div class="row content content-right">
             <div class="content-image col-md-4">
-                imaje   
             </div>
             <div class="content-text col-md-8">
             <h3>Listar os 5 maiores grupos armados com maior número de armas fornecidos.</h3>
@@ -149,7 +145,6 @@
             <?php $utils->IndexQueryLists($paises, 'Pais/Conflito Religioso'); ?>
             </div>
             <div class="content-image col-md-4">
-                imaje   
             </div>
         </div>
         <div class="row content content-center">
