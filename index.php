@@ -101,8 +101,12 @@
             </div>
         </div>
     </section>
-        <h2>Buscas</h2>
-        <div class="row content-left">
+    <section class="content-section">
+        <div class="contents-title">
+            <h2>Buscas</h2>
+            <span>Aqui realizaremos todas as buscas requisitadas</span>
+        </div>    
+        <div class="row content content-left">
             <div class="content-text col-md-8">
                 <h3>Listar os traficantes e os grupos armados (Nome) para os quais os traficantes fornecem armas “Barret M82” ou “M200 intervention”</h3>
                 <?php $utils->IndexQueryLists($gruposMili, 'Grupo Armado/Fornece'); ?>
@@ -112,8 +116,7 @@
                 imaje  
             </div>
         </div>
-    <section class="content-section">
-        <div class="row content-right">
+        <div class="row content content-right">
             <div class="content-image col-md-4">
                 imaje   
             </div>
@@ -122,7 +125,7 @@
             <?php $utils->IndexQueryLists($conflitos, 'Conflito'); ?>
             </div>
         </div>
-        <div class="row content-left">
+        <div class="row content content-left">
             <div class="content-text col-md-8">
             <h3>Listar as 5 maiores organizações em número de mediações</h3>
             <?php $utils->IndexQueryLists($organizacoes, 'Organizacao Mediadora'); ?>
@@ -131,7 +134,7 @@
                 imaje   
             </div>
         </div>
-        <div class="row content-right">
+        <div class="row content content-right">
             <div class="content-image col-md-4">
                 imaje   
             </div>
@@ -140,7 +143,7 @@
             <?php $utils->IndexQueryLists($gruposMiliByGuns, 'Grupo Militar/Fornece'); ?>
             </div>
         </div>
-        <div class="row content-left">
+        <div class="row content content-left">
             <div class="content-text col-md-8">
             <h3>Listar o país e número de conflitos com maior número de conflitos religiosos.</h3>
             <?php $utils->IndexQueryLists($paises, 'Pais/Conflito Religioso'); ?>

@@ -58,7 +58,6 @@ section {
 /* Footer */
 
 footer {
-    margin-top: 50px;
     padding: 7px 50px;
     background-color: rgb(57, 49, 49);
     color: white;
@@ -176,6 +175,42 @@ footer {
     cursor: pointer;
 } 
 
+/* Queries */
+.content-section {
+    padding: 30px 0px;
+    background-color: #363535;
+}
+
+.content-section .contents-title {
+    width: 50%;
+    color: white;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    
+}
+
+.content-section .content {
+    min-height: 50vh;
+}
+
+.content-section .content-text {
+    text-align: center;
+}
+
+.content-section .content-left, .content-section .content-right {
+    padding: 30px;
+}
+
+.content-section .content-left * {
+    color: white;
+}
+
+.content-section .content-right {
+    background-color: #E2E2E2;
+}
+
 /* Criação de chefe militar */
 #grupo-militar-create, #lider-politico-create, #divisao-create{
     display: block;
@@ -183,6 +218,10 @@ footer {
 
 #new-grupo-militar-actions, #new-lider-politico-actions, #new-divisao-actions{
     display: inline-block;
+}
+
+#grupo-militar-info, #lider-politico-info, #divisao-info {
+    margin-bottom: 10px;
 }
 
 /* Forms */
@@ -280,11 +319,6 @@ input:focus {
     font-weight: bold;
 }
 
-.table-data.table-list-all {
-    width: auto;
-    height: 60vh;
-    overflow-y: scroll;
-}
 .table-data {
     display: inline-block;
     width: auto;
@@ -294,6 +328,7 @@ input:focus {
     overflow: hidden;
     border-collapse: collapse;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    overflow-y: auto;
 }
 .table-data th, .table-data td {
     padding: 15px;
@@ -315,4 +350,23 @@ tbody tr:hover {
     position: sticky;
     top: 0;
 }
-   
+
+.table-data::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.table-data::-webkit-scrollbar {
+    border-radius: 200px;
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.table-data::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}

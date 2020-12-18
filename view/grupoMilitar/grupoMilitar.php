@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Todas os grupos militares</h1>
-                <table class="table-data table-list-all">
+                <table class="table-data">
                     <thead>
                         <tr>
                             <?php
@@ -56,5 +56,4 @@
         endif;
     ?>
 </body>
-<?php include("../../template/footer.php"); ?>
 </html>
