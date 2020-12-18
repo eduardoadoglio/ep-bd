@@ -153,10 +153,7 @@
             </div>
         </div>
         <div class="row content content-center">
-            <div class="content-image col-md-4">
-                imaje   
-            </div>
-            <div class="content-text col-md-8">
+            <div class="content-text col-md-12">
             <h3>Histograma</h3>
             <div class="chart-container">
                 <canvas id="histograma" width="400" height="400"></canvas>

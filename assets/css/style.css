@@ -207,8 +207,16 @@ footer {
     color: white;
 }
 
-.content-section .content-right {
+.content-section .content-right, .content-section .content-center {
     background-color: #E2E2E2;
+}
+
+/* Histograma */
+
+.chart-container {
+    width: 50vw;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Criação de chefe militar */
