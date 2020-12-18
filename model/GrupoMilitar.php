@@ -18,14 +18,6 @@ class GrupoMilitar {
         return $this->database->getLastInsertId();
     }
 
-    function updateGrupoMilitar($name){
-
-    }
-
-    function deleteGrupoMilitar($name){
-
-    }
-
     function getGrupoMilitarById($id){
         $response = $this->database->executeQuery("SELECT * FROM grupoarmado WHERE codigog = :id", array(
             ":id" => $id

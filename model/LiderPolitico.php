@@ -20,14 +20,6 @@ class LiderPolitico {
         return true;
     }
 
-    function updateLiderPolitico($name){
-
-    }
-
-    function deleteLiderPolitico($name){
-
-    }
-
     function getLiderPoliticoById($codigog, $nomel){
         $response = $this->database->executeQuery("SELECT * FROM liderpolitico WHERE codigog = :codigog AND nomel = :nomel", array(
             ":codigog" => $codigog,

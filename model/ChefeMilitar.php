@@ -26,15 +26,7 @@ class ChefeMilitar {
             return $e->getCode();
         }
     }
-
-    function updateChefeMilitar($name){
-
-    }
-
-    function deleteChefeMilitar($name){
-
-    }
-
+    
     function getChefeMilitarById($id){
         $response = $this->database->executeQuery("SELECT * FROM chefemilitar WHERE codigochef = :id", array(
             ":id" => $id

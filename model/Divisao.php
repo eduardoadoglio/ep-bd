@@ -10,7 +10,6 @@ class Divisao {
         $this->database = new Database();
     }
     
-
     function createDivisao($id, $barcos, $avioes, $tanques, $homens){
         $this->database->executeQuery("INSERT INTO divisao (codigog, numbaixasd, barcos, avioes, tanques, homens) VALUES (:codigog, 0, :barcos, :avioes, :tanques, :homens)", array(
             ":codigog" => $id,
