@@ -12,7 +12,7 @@
     <div class="container-fluid table-content ">
         <div class="row">
             <div class="col-md-12">
-                <h1>Todas os conflitos bélicos</h1>
+                <h1>Todos os chefes militares</h1>
                 <table class="table-data table-list-all">
                     <thead>
                         <tr>
@@ -56,5 +56,4 @@
         endif;
     ?>
 </body>
-<?php include("../../template/footer.php"); ?>
 </html>
