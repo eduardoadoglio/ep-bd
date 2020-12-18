@@ -30,7 +30,7 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
                         <input type="text" required name="chefeMilitarFaixa"> <br>
                         <div id="grupo-militar-container">
                             Selecione um grupo militar <br>
-                            <select name="grupoMilitarId" id="grupo-militar-select" required>
+                            <select id="grupo-militar-select">
                             <option value="" selected disabled> -- </option>
                                 <?php
                                     foreach($gruposMilitares as $grupo){
@@ -41,7 +41,7 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
                             </select> <br>
                         </div>
                         <div id="grupo-militar-info">
-                            <input type="hidden" id="hidden-grupo-militar-id">
+                            <input type="hidden" name="grupoMilitarId" id="hidden-grupo-militar-id">
                         </div>
                         <div id="grupo-militar-create" class="hidden">
                             Diga o nome do grupo militar <br>
@@ -62,7 +62,7 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
                             </div>
                         </div>
                         <div id="lider-politico-info">
-                            <input type="hidden" id="hidden-lider-politico-name">
+                            <input type="hidden" name="liderPoliticoName" id="hidden-lider-politico-name">
                         </div>
                         <div id="divisao-create" class="hidden">
                             Descreva a divisão <br>
@@ -80,7 +80,7 @@ $lideresPoliticos = $liderPoliticoObj->getAllLideresPoliticos();
                             </div>
                         </div>
                         <div id="divisao-info">
-                            <input type="hidden" id="hidden-divisao-id">
+                            <input type="hidden" name="divisaoId" id="hidden-divisao-id">
                         </div>
 
                         <input type="submit" value="Enviar" id="create-chefe-militar-submit">

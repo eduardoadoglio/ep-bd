@@ -195,7 +195,7 @@ $(document).ready(function(){
             return handleCreationForm('grupo-militar');
         }
         if($("#lider-politico-container").length == 0){
-            $(this).after('<div id="lider-politico-container"> Selecione um lider político <br><select name="liderPoliticoName" id="lider-politico-select"><option value="" disabled selected> -- </option></select></div>');
+            $(this).after('<div id="lider-politico-container"> Selecione um lider político <br><select id="lider-politico-select"><option value="" disabled selected> -- </option></select></div>');
         }
         getLideresPoliticosFromGrupoMilitar(grupoMilitarId);
     });
@@ -220,7 +220,7 @@ $(document).ready(function(){
             return handleCreationForm('lider-politico');
         }
         if($("#divisao-container").length == 0){
-            $(this).after('<div id="divisao-container"> Selecione uma divisão <br><select name="divisaoId" id="divisao-select"><option value="" disabled selected> -- </option></select></div>');
+            $(this).after('<div id="divisao-container"> Selecione uma divisão <br><select id="divisao-select"><option value="" disabled selected> -- </option></select></div>');
         }
         getDivisoesFromLiderPolitico(liderPoliticoName);
     });
