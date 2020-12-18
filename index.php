@@ -68,7 +68,7 @@
                     <p>
                         Cadastre uma divisão
                     </p>
-                    <a href="view/divisao/createdivisao.php"><button>CADASTRAR</button></a>
+                    <a href="view/divisao/createDivisao.php"><button>CADASTRAR</button></a>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
                     <p>
                         Cadastre um lider político
                     </p>
-                    <a href="view/liderPolitico/createliderPolitico.php"><button>CADASTRAR</button></a>
+                    <a href="view/liderPolitico/createLiderPolitico.php"><button>CADASTRAR</button></a>
                 </div>
             </div>
             <div class="service col-md-2">
