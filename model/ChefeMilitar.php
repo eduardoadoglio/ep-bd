@@ -22,8 +22,8 @@ class ChefeMilitar {
             ));
             return $this->database->getLastInsertId();
         } catch(Exception $e){
-            echo 'Errozao: '.$e->getMessage();
-            return $e;
+            // echo 'Errozao: '.$e->getMessage();
+            return $e->getMessage();
         }
     }
 
