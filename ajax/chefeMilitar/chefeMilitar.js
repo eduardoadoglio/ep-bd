@@ -65,7 +65,6 @@ function getDivisoesFromLiderPolitico(liderPoliticoName){
             liderPoliticoName:liderPoliticoName
         },
         success: function(ajaxResult){
-            console.log(JSON.parse(ajaxResult));
             let ajaxObj = JSON.parse(ajaxResult);
             addDivisoesToSelect(ajaxObj);
         },
@@ -127,9 +126,8 @@ function createDivisao(codigoGrupo, numBarcos, numAvioes, numTanques, numHomens)
             numHomens:numHomens,
         },
         success: function(ajaxResult){
-            console.log(ajaxResult);
             let ajaxObj = JSON.parse(ajaxResult);
-            $("#new-divisao-actions, #divisao-create").toggleClass('hidden');
+            $("#new-divisao-actions, #divisao-create").addClass('hidden');
             $("#divisao-info").removeClass("hidden");
             $("#divisao-info").append("Divisão: " + ajaxObj.nrodivisao);
             $("#hidden-divisao-id").attr("value", ajaxObj.nrodivisao);
@@ -155,9 +153,12 @@ function addLideresPoliticosToSelect(lideresPoliticos){
 }
 
 function handleDivisaoCancel() {
-    $("#new-divisao-actions").toggleClass('hidden');
-    $("#grupo-militar-info").toggleClass('hidden');
-    $("#lider-politico-info").toggleClass('hidden');
+    $("#new-divisao-actions").addClass('hidden');
+    if($("#hidden-lider-politico-name").attr("value")){
+        $("#divisao-info").after('<div id="divisao-container"> Selecione uma divisão <br><select id="divisao-select"><option value="" disabled selected> -- </option></select></div>');
+        $("#divisao-select option").not('option:first').remove();
+        getDivisoesFromLiderPolitico($("#hidden-lider-politico-name").val());
+    }
     $("#grupo-militar-create, #lider-politico-create, #divisao-create").addClass('hidden');
     $('#grupo-militar-container').removeClass('hidden');
     $('#divisao-container').removeClass('hidden');
@@ -274,7 +275,6 @@ $(document).ready(function(){
         let numHomens = $("#num-homens").val();
         let codigoGrupo = $('#hidden-grupo-militar-id').val();
         createDivisao(codigoGrupo, numBarcos, numAvioes, numTanques, numHomens);
-        $("#new-divisao-actions, #divisao-create").toggleClass('hidden');
     });
 
     // Cancelamento da criação de um lider politico
