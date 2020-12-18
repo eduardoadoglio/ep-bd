@@ -323,34 +323,36 @@ CREATE FUNCTION InserirHierarquiaGat() RETURNS trigger AS $InserirHierarquiaGat$
     END;
 $InserirHierarquiaGat$ LANGUAGE plpgsql;
 
-CREATE FUNCTION InsertDelOrUpdDivisao() RETURNS trigger AS $InsertDelOrUpdDivisao$
+CREATE FUNCTION DelOrUpdDivisao() RETURNS trigger AS $DelOrUpdDivisao$
     BEGIN
 
-        IF (SELECT (SELECT COUNT(*) FROM Divisao WHERE Divisao.CodigoG = OLD.CodigoG)) = 1 THEN
-            RAISE EXCEPTION 'Todo grupo armado precisa dispor de no mínimo uma divisão!';
-        END IF;
+      IF (SELECT (SELECT COUNT(*) FROM Divisao WHERE Divisao.CodigoG = OLD.CodigoG)) = 1 THEN
+          RAISE EXCEPTION 'Todo grupo armado precisa dispor de no mínimo uma divisão!';
+      END IF;
 
-        IF (TG_OP = 'INSERT') THEN
-          UPDATE GrupoArmado SET NumBaixasG = NumBaixasG + NEW.NumBaixasD WHERE GrupoArmado.CodigoG = NEW.CodigoG;
-          NEW.NroDivisao = (SELECT coalesce(MAX(Divisao.NroDivisao), 0) FROM Divisao WHERE Divisao.CodigoG = NEW.CodigoG) + 1;
-          RETURN NEW;
-        END IF;
-
-        IF (TG_OP = 'UPDATE') THEN
-          UPDATE GrupoArmado SET NumBaixasG = NumBaixasG + NEW.NumBaixasD - OLD.NumBaixasD WHERE GrupoArmado.CodigoG = OLD.CodigoG;
-          RETURN NEW;
-        END IF;
+      IF (TG_OP = 'UPDATE') THEN
+        UPDATE GrupoArmado SET NumBaixasG = NumBaixasG + NEW.NumBaixasD - OLD.NumBaixasD WHERE GrupoArmado.CodigoG = OLD.CodigoG;
+        RETURN NEW;
+      END IF;
 
       IF (TG_OP = 'DELETE') THEN
-          UPDATE GrupoArmado SET NumBaixasG = NumBaixasG - OLD.NumBaixasD WHERE GrupoArmado.CodigoG = OLD.CodigoG;
-          RETURN OLD;
-        END IF;
+        UPDATE GrupoArmado SET NumBaixasG = NumBaixasG - OLD.NumBaixasD WHERE GrupoArmado.CodigoG = OLD.CodigoG;
+        RETURN OLD;
+      END IF;
 
-        RETURN NULL;
+      RETURN NULL;
 
     END;
-$InsertDelOrUpdDivisao$ LANGUAGE plpgsql;
+$DelOrUpdDivisao$ LANGUAGE plpgsql;
 
+
+CREATE FUNCTION InsertDivisao() RETURNS trigger AS $InsertDivisao$
+    BEGIN
+      UPDATE GrupoArmado SET NumBaixasG = NumBaixasG + NEW.NumBaixasD WHERE GrupoArmado.CodigoG = NEW.CodigoG;
+      NEW.NroDivisao = (SELECT coalesce(MAX(Divisao.NroDivisao), 0) FROM Divisao WHERE Divisao.CodigoG = NEW.CodigoG) + 1;
+      RETURN NEW;
+    END;
+$InsertDivisao$ LANGUAGE plpgsql;
 
 CREATE TRIGGER DelOrUpdPais BEFORE DELETE OR UPDATE ON Pais
   FOR EACH ROW EXECUTE PROCEDURE DelOrUpdPais();
@@ -379,8 +381,11 @@ CREATE TRIGGER InserirHierarquiaReg BEFORE INSERT ON Religioso
 CREATE TRIGGER InserirHierarquiaTer BEFORE INSERT ON Territorial
     FOR EACH ROW EXECUTE PROCEDURE InserirHierarquiaGat();
 
-CREATE TRIGGER InsertDelOrUpdDivisao BEFORE INSERT OR DELETE OR UPDATE ON Divisao
-  FOR EACH ROW EXECUTE PROCEDURE InsertDelOrUpdDivisao();
+CREATE TRIGGER DelOrUpdDivisao BEFORE DELETE OR UPDATE ON Divisao
+  FOR EACH ROW EXECUTE PROCEDURE DelOrUpdDivisao();
+
+CREATE TRIGGER InsertDivisao BEFORE INSERT ON Divisao
+  FOR EACH ROW EXECUTE PROCEDURE InsertDivisao();
 
 
 INSERT INTO GrupoArmado (NomeGrupo) VALUES ('EACH');
