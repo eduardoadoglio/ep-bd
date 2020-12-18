@@ -51,6 +51,7 @@ section {
 .menu .logo img {
     height: 60px;
     width: auto;
+    filter: invert(1);
 }
 
 .menu .links a{
