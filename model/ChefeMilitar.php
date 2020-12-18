@@ -22,8 +22,11 @@ class ChefeMilitar {
             ));
             return $this->database->getLastInsertId();
         } catch(Exception $e){
-            // echo 'Errozao: '.$e->getMessage();
-            return $e->getMessage();
+            if($e->getCode() == "P0001"){
+                return "Uma divisão só pode ter 3 chefes militares";
+            }else{
+                return $e->getMessage();
+            }
         }
     }
 

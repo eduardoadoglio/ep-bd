@@ -8,7 +8,7 @@ if(isset($_POST['grupoMilitarId']) && isset($_POST['divisaoId']) && isset($_POST
 	    $chefeMilitar = $chefeMilitarObj->getChefeMilitarById($id);
 	    $_SESSION['chefeMilitar'] = $chefeMilitar;
     } else {
-		$_SESSION['chefeMilitar'] = $id;
+		  $_SESSION['chefeMilitar'] = $id;
     }
 
     header('Location: ../../view/chefeMilitar/chefeMilitarData.php');
