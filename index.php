@@ -21,7 +21,7 @@
 <div class="home-hero">
     <div class="hero-text">
         <h1>Conflitos Bélicos</h1>
-        <p>subtitulo de impacto</p>    
+        <p>Aplicação para cadastrar e buscar conflitos bélicos</p>    
     </div>
     <button><a href="#main-content" >V</a></button>
 </div>
