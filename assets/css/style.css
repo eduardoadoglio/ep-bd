@@ -58,7 +58,6 @@ section {
 /* Footer */
 
 footer {
-    margin-top: 50px;
     padding: 7px 50px;
     background-color: rgb(57, 49, 49);
     color: white;
@@ -175,6 +174,49 @@ footer {
     text-decoration: none;
     cursor: pointer;
 } 
+
+/* Queries */
+.content-section {
+    padding: 30px 0px;
+    background-color: #363535;
+}
+
+.content-section .contents-title {
+    width: 50%;
+    color: white;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    
+}
+
+.content-section .content {
+    min-height: 50vh;
+}
+
+.content-section .content-text {
+    text-align: center;
+}
+
+.content-section .content-left h3 {
+    text-align: left;
+}
+.content-section .content-right h3 {
+    text-align: right;
+}
+
+.content-section .content-left, .content-section .content-right {
+    padding: 30px;
+}
+
+.content-section .content-left * {
+    color: white;
+}
+
+.content-section .content-right {
+    background-color: #E2E2E2;
+}
 
 /* Criação de chefe militar */
 #grupo-militar-create, #lider-politico-create, #divisao-create{
