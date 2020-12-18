@@ -74,7 +74,7 @@ class ConflitoBelico {
     }
 
     public function getConflitoBelicoOrderdByDeaths(){
-        $response = $this->database->executeQuery("SELECT Nome, NumMortos FROM Conflito ORDER BY (NumMortos) DESC LIMIT 5;");
+    $response = $this->database->executeQuery('SELECT Nome as "Nome", NumMortos as "Número de mortos" FROM Conflito ORDER BY (NumMortos) DESC LIMIT 5;');
         return $response->fetchAll(PDO::FETCH_ASSOC);
     }
 
