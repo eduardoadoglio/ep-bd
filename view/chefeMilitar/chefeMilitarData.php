@@ -4,19 +4,20 @@
     include("../../template/menu.php");
     if(isset($_SESSION['chefeMilitar'])){
         $chefeMilitar = $_SESSION['chefeMilitar'];
+        $errorMessage = $_SESSION['errorMessage'];
     }else{
         header('Location: ../../view/chefeMilitar/chefeMilitar.php');
     }
 ?>
 <body>
     <?php  
-        if(is_string($chefeMilitar)):
+        if($chefeMilitar == "P0001"):
     ?>
     <div class="container-fluid table-content">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <?php  
-                    echo '<h1>'.$chefeMilitar.'</h1>';
+                    echo '<h1>'.$errorMessage.'</h1>';
                 ?>
             </div>
         </div>
